@@ -19,7 +19,9 @@ public class Main {
         lectures2.subject = "Physic";
 
         LectureUtils lectures3 = new LectureUtils();
+
         LectureUtils lectures4 = new LectureUtils();
+        LectureUtils lectures5 = new LectureUtils();
 
         System.out.println(LectureUtils.count);
 
