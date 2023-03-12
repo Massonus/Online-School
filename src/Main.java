@@ -18,6 +18,8 @@ public class Main {
         lectures2.course = "first";
         lectures2.subject = "Physic";
 
+        LectureUtils lectures3 = new LectureUtils();
+
         System.out.println(LectureUtils.count);
 
     }
