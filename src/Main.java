@@ -1,29 +1,17 @@
+import entity.Lecture;
 import utils.LectureUtils;
 
 public class Main {
     public static void main(String[] args) {
 
-        LectureUtils lectures = new LectureUtils();
-        lectures.num = 1;
-        lectures.course = "second";
-        lectures.subject = "Math";
+        Lecture lectures = new Lecture();
+        Lecture lectures1 = new Lecture();
+        Lecture lectures2 = new Lecture();
+        Lecture lectures3 = new Lecture();
+        Lecture lectures4 = new Lecture();
+        Lecture lectures5 = new Lecture();
 
-        LectureUtils lectures1 = new LectureUtils();
-        lectures1.num = 2;
-        lectures1.course = "third";
-        lectures1.subject = "English";
-
-        LectureUtils lectures2 = new LectureUtils();
-        lectures2.num = 3;
-        lectures2.course = "first";
-        lectures2.subject = "Physic";
-
-        LectureUtils lectures3 = new LectureUtils();
-
-        LectureUtils lectures4 = new LectureUtils();
-        LectureUtils lectures5 = new LectureUtils();
-
-        System.out.println(LectureUtils.count);
+        System.out.println(Lecture.count);
 
     }
 }

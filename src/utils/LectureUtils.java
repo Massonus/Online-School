@@ -1,18 +1,15 @@
 package utils;
 
-public class LectureUtils {
-    void createUtils () {
-        LectureUtils lectureUtils = new LectureUtils();
-        System.out.println(lectureUtils);
-    }
-    public static int count;
-    public int num;
-    public String subject;
-    public String course;
+import entity.Lecture;
 
-    public LectureUtils() {
-    count++;
+public class LectureUtils {
+
+    Lecture lecture;
+    void createUtils () {
+        StudentUtils studentUtils = new StudentUtils();
+        System.out.println(studentUtils);
     }
+
 
 
 }
