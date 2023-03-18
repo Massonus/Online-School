@@ -5,7 +5,8 @@ import entity.Teacher;
 public class TeacherUtils {
 
     Teacher teacher;
-    void createUtils () {
+
+    void createUtils() {
         TeacherUtils teacherUtils = new TeacherUtils();
         System.out.println(teacherUtils);
     }
