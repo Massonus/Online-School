@@ -1,4 +1,5 @@
 import entity.Lecture;
+import utils.CourseUtils;
 import utils.LectureUtils;
 
 public class Main {
@@ -11,9 +12,11 @@ public class Main {
         Lecture lectures4 = new Lecture(5, "Ukrainian");
         Lecture lectures5 = new Lecture(6, "Chemistry");
 
-        System.out.println(Lecture.count);
+        System.out.println("Sum of Lectures: " + Lecture.count);
         lectureUtils.printLecture(lectures5);
 
+        CourseUtils courseUtils = new CourseUtils();
+        courseUtils.Console();
 
     }
 }
