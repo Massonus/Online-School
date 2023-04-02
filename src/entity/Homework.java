@@ -1,27 +1,12 @@
 package entity;
 
-public class Homework {
-    private int id;
+public class Homework extends University {
 
-    private String Name;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
+    public Homework(int id, String name) {
+        super(id, name);
     }
 
     public Homework() {
-
     }
 }

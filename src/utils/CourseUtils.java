@@ -1,6 +1,6 @@
 package utils;
 
-import Repositories.LectureRepo;
+import repositories.LectureRepo;
 import entity.Course;
 import entity.Lecture;
 import entity.Student;
@@ -19,12 +19,12 @@ public class CourseUtils {
         Scanner scanner = new Scanner(System.in);
         Scanner scanner1 = new Scanner(System.in);
         Scanner scanner2 = new Scanner(System.in);
-        Lecture[] lectures = LectureRepo.lectures;
+        Lecture[] lectures = LectureRepo.getLectures();
         int ch;
         while (true) {
             do {
 
-                System.out.println("Choose your category, use only numbers from 1 to 4: \n");
+                System.out.println("Choose your category, use only numbers from 1 to 6: \n");
                 System.out.println("1 to choose Course");
                 System.out.println("2 to choose Teacher");
                 System.out.println("3 to choose Student");
@@ -61,7 +61,7 @@ public class CourseUtils {
                         System.out.println("\nInput Lecture name");
 
                         String name = scanner2.nextLine();
-                        lecture.setCourseId(name);
+                        lecture.setName(name);
                         System.out.println("\nFull lecture: " + lecture + "\n");
                         lectures[i] = lecture;
                         System.out.println(lectures[i]);
@@ -80,7 +80,7 @@ public class CourseUtils {
 
                 case 6:
                         for (int i = 0; i < lectures.length; i++) {
-                            System.out.println(lectures[i]);
+                            System.out.println(lectures[i].getId());
 
                         }
 

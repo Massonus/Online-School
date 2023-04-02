@@ -1,4 +1,4 @@
-import Repositories.LectureRepo;
+import repositories.LectureRepo;
 import entity.Lecture;
 import utils.CourseUtils;
 import utils.LectureUtils;
@@ -8,7 +8,7 @@ public class Main {
 
         LectureRepo.createLectureMas(5);
 
-        final Lecture[] lectures = LectureRepo.lectures;
+        final Lecture[] lectures = LectureRepo.getLectures();
 
         LectureUtils lectureUtils = new LectureUtils();
         lectureUtils.CreateLectures();
