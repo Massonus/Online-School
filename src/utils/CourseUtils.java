@@ -1,10 +1,7 @@
 package utils;
 
+import entity.*;
 import repositories.LectureRepo;
-import entity.Course;
-import entity.Lecture;
-import entity.Student;
-import entity.Teacher;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -19,7 +16,11 @@ public class CourseUtils {
         Scanner scanner = new Scanner(System.in);
         Scanner scanner1 = new Scanner(System.in);
         Scanner scanner2 = new Scanner(System.in);
+        Scanner scanner3 = new Scanner(System.in);
+        Scanner scanner4 = new Scanner(System.in);
         Lecture[] lectures = LectureRepo.getLectures();
+        Person person = new Person();
+        Teacher teacher = new Teacher();
         int ch;
         while (true) {
             do {
@@ -37,21 +38,29 @@ public class CourseUtils {
 
             switch (ch) {
                 case 1:
-                    Course course = new Course(0, "null");
+                    Course course = new Course();
                     System.out.println(course);
                     break;
                 case 2:
-                    Teacher teacher = new Teacher();
                     System.out.println(teacher.getName());
                     break;
                 case 3:
-                    Student student = new Student();
-                    System.out.println(student.getName());
+                    System.out.println("Input Student's Id (only numbers)");
+                    int id1 = scanner.nextInt();
+
+                    person.setRole(Role.STUDENT);
+                    person.setId(id1);
+                    System.out.println("Input Student's Course id");
+                    String courseId = scanner1.nextLine();
+                    person.setCourseId(courseId);
+
+                    System.out.println(person);
+
                     break;
                 case 4:
                     for (int i = 0; i < lectures.length; i++) {
 
-                        Lecture lecture = new Lecture(0, "null");
+                        Lecture lecture = new Lecture();
                         System.out.println("\nInput Lecture Id (only numbers)");
 
                         int id = scanner1.nextInt();
@@ -62,13 +71,23 @@ public class CourseUtils {
 
                         String name = scanner2.nextLine();
                         lecture.setName(name);
-                        System.out.println("\nFull lecture: " + lecture + "\n");
+                        System.out.println("Input the id of teacher");
+
+                        int teacherId = scanner.nextInt();
+                        teacher.setId(teacherId);
+
+                        System.out.println("Input the name of teacher");
+                        String teacherName = scanner4.nextLine();
+                        teacher.setName(teacherName);
+
+                        System.out.println("\nFull lecture: " + lecture.getId() + " " + teacher);
                         lectures[i] = lecture;
                         System.out.println(lectures[i]);
 
                         if (lectures.length > 5) {
 
                             Lecture[] lectures1 = Arrays.copyOf(lectures, lectures.length * 3 / 2 + 1);
+                            lectures = lectures1;
                         }
 
                     }
@@ -79,10 +98,10 @@ public class CourseUtils {
                     break;
 
                 case 6:
-                        for (int i = 0; i < lectures.length; i++) {
-                            System.out.println(lectures[i].getId());
+                    for (Lecture lecture : lectures) {
+                        System.out.println(lecture.getId());
 
-                        }
+                    }
 
                 default:
                     System.out.println("Incorrect symbol");
