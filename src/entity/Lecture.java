@@ -10,14 +10,25 @@ public class Lecture extends University {
 
     private String description;
 
-
-     public Lecture(int id, String name, int personId) {
+    public Lecture(int id, String name, int personId) {
         super(id, name);
         this.personId = personId;
         count++;
     }
 
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
+
     public Lecture() {
+    }
+
+    public Lecture(int id, String name) {
+        super(id, name);
     }
 
     @Override
@@ -36,5 +47,14 @@ public class Lecture extends University {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Lecture{" +
+                "personId=" + personId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

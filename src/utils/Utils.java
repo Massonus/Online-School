@@ -1,14 +1,15 @@
 package utils;
 
 import entity.*;
-import repositories.LectureRepo;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Utils {
+
+    Generalization<Lecture> generalization = new Generalization<>();
+    Lecture[] lectures = new Lecture[2];
     Scanner scanner = new Scanner(System.in);
     Scanner scanner1 = new Scanner(System.in);
     Scanner scanner2 = new Scanner(System.in);
@@ -16,10 +17,11 @@ public class Utils {
     Scanner scanner4 = new Scanner(System.in);
     Scanner scanner5 = new Scanner(System.in);
     Scanner scanner6 = new Scanner(System.in);
-    Lecture[] lectures = LectureRepo.getLectures();
     Course course = new Course();
+    Lecture lecture = new Lecture();
     Person person = new Person();
     Teacher teacher = new Teacher();
+    Lecture[] lectures1 = generalization.add(lectures);
 
     public void Console() {
 
@@ -34,8 +36,8 @@ public class Utils {
                 System.out.println("4 to choose Student");
                 System.out.println("5 to choose Lecture");
                 System.out.println("6 to close the program");
-                System.out.println("7 to print Massive\n");
-                System.out.println("8 to check data of Person");
+                System.out.println("7 to print Massive");
+                System.out.println("8 to check data of Person\n");
 
                 ch = scanner.nextInt();
 
@@ -93,14 +95,14 @@ public class Utils {
 
                     break;
                 case 5:
-                    for (int i = 0; i < lectures.length; i++) {
 
-                        Lecture lecture = new Lecture();
+                    for (int i = 0; i < lectures1.length; i++) {
+
                         System.out.println("\nInput Lecture Id (only numbers)");
 
                         int id = scanner1.nextInt();
 
-                        lecture.setId(id);
+                        lecture.setPersonId(id);
 
                         System.out.println("\nInput Lecture name");
 
@@ -112,6 +114,9 @@ public class Utils {
                         String name3 = scanner6.nextLine();
                         lecture.setDescription(name3);
 
+                        lectures1[i] = lecture;
+                        System.out.println(lectures1[i]);
+
                         System.out.println("Input the id of teacher");
 
                         int teacherId = scanner.nextInt();
@@ -122,14 +127,6 @@ public class Utils {
                         teacher.setName(teacherName);
 
                         System.out.println("\nFull lecture: " + lecture.getId() + " " + teacher);
-                        lectures[i] = lecture;
-                        System.out.println(lectures[i]);
-
-                        if (lectures.length > 5) {
-
-                            Lecture[] lectures1 = Arrays.copyOf(lectures, lectures.length * 3 / 2 + 1);
-                            lectures = lectures1;
-                        }
 
                     }
 
@@ -139,8 +136,8 @@ public class Utils {
                     break;
 
                 case 7:
-                    for (Lecture lecture : lectures) {
-                        System.out.println(lecture.getId());
+                    for (Lecture lecture1 : lectures1) {
+                        System.out.println(lecture1);
 
                     }
                     break;
