@@ -8,4 +8,9 @@ public class Teacher extends University {
 
     public Teacher() {
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{}";
+    }
 }

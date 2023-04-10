@@ -6,10 +6,13 @@ import utils.Utils;
 
 public class Main {
     public static void main(String[] args) {
+        Utils utils = new Utils();
+        utils.Console();
 
         LectureRepo.createLectureMas(5);
 
         final Lecture[] lectures = LectureRepo.getLectures();
+
 
         LectureUtils lectureUtils = new LectureUtils();
         lectureUtils.CreateLectures();
@@ -19,8 +22,13 @@ public class Main {
         CourseUtils courseUtils = new CourseUtils();
         courseUtils.CreateCourse();
 
-        Utils utils = new Utils();
-        utils.Console();
+
+
+
+
+
+
+
 
 
 
