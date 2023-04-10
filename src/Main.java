@@ -2,6 +2,7 @@ import repositories.LectureRepo;
 import entity.Lecture;
 import utils.CourseUtils;
 import utils.LectureUtils;
+import utils.Utils;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,7 +18,11 @@ public class Main {
 
         CourseUtils courseUtils = new CourseUtils();
         courseUtils.CreateCourse();
-        courseUtils.Console();
+
+        Utils utils = new Utils();
+        utils.Console();
+
+
 
 
 
