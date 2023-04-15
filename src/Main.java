@@ -4,9 +4,12 @@ import utils.CourseUtils;
 import utils.LectureUtils;
 import utils.Utils;
 
+import java.util.NoSuchElementException;
+
 public class Main {
     public static void main(String[] args) {
         Utils utils = new Utils();
+
         utils.Console();
 
         LectureRepo.createLectureMas(5);
@@ -20,7 +23,11 @@ public class Main {
         System.out.println("Sum of Lectures: " + Lecture.count);
 
         CourseUtils courseUtils = new CourseUtils();
+
+
+
         courseUtils.CreateCourse();
+
 
 
     }
