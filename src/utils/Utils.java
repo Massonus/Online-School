@@ -1,6 +1,6 @@
 package utils;
 
-import entity.*;
+import entities.*;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -126,7 +126,7 @@ public class Utils {
                         String teacherName = scanner4.nextLine();
                         teacher.setName(teacherName);
 
-                        System.out.println("\nFull lecture: " + lecture.getId() + " " + teacher);
+                        System.out.println("\nFull lecture: " + lecture.getPersonId() + " " + teacher);
 
                     }
 

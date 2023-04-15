@@ -1,5 +1,5 @@
+import entities.Lecture;
 import repositories.LectureRepo;
-import entity.Lecture;
 import utils.CourseUtils;
 import utils.LectureUtils;
 import utils.Utils;
@@ -21,17 +21,6 @@ public class Main {
 
         CourseUtils courseUtils = new CourseUtils();
         courseUtils.CreateCourse();
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

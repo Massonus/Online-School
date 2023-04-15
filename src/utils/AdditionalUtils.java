@@ -1,6 +1,6 @@
 package utils;
 
-import entity.Additional;
+import entities.Additional;
 
 public class AdditionalUtils {
     Additional additional;

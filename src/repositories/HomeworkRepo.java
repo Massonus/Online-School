@@ -1,9 +1,8 @@
 package repositories;
 
-import entity.Homework;
-import entity.University;
+import entities.Homework;
 
-public class HomeworkRepo extends UniversityRepo {
+public class HomeworkRepo implements AboutRepo {
 
     private static Homework[] homeworks;
 
@@ -12,22 +11,32 @@ public class HomeworkRepo extends UniversityRepo {
     }
 
     @Override
-    public void getAll() {
-        super.getAll();
+    public void getIt() {
+        for (Homework homework : homeworks) {
+            System.out.println(homework);
+        }
     }
 
     @Override
-    public void add(University university) {
-        super.add(university);
+    public void add() {
+
+        if (homeworks != null && homeworks.length > 0) {
+            if (homeworks[0] != null) {
+                System.out.println("Exist");
+                return;
+            }
+        } else {
+            System.out.println("Error");
+        }
     }
 
     @Override
     public void getByld() {
-        super.getByld();
+
     }
 
     @Override
     public void deleteByld() {
-        super.deleteByld();
+
     }
 }

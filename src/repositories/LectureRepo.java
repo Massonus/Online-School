@@ -1,9 +1,8 @@
 package repositories;
 
-import entity.Lecture;
-import entity.University;
+import entities.Lecture;
 
-public class LectureRepo extends UniversityRepo {
+public class LectureRepo implements AboutRepo {
 
     private static Lecture[] lectures;
 
@@ -19,22 +18,32 @@ public class LectureRepo extends UniversityRepo {
     }
 
     @Override
-    public void getAll() {
-        super.getAll();
+    public void getIt() {
+        for (Lecture lecture : lectures) {
+            System.out.println(lecture);
+        }
     }
 
     @Override
-    public void add(University university) {
-        super.add(university);
+    public void add() {
+
+        if (lectures != null && lectures.length > 0) {
+            if (lectures[0] != null) {
+                System.out.println("Exist");
+                return;
+            }
+        } else {
+            System.out.println("Error");
+        }
     }
 
     @Override
     public void getByld() {
-        super.getByld();
+
     }
 
     @Override
     public void deleteByld() {
-        super.deleteByld();
+
     }
 }

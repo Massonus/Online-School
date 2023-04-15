@@ -32,13 +32,14 @@ public class Generalization<E> {
 
     }
 
-    public void add (int index, E e){
+    public void add(int index, E e) {
         if (lecturesArray == null) {
             System.out.println("Empty");
             return;
         }
         lecturesArray[index] = e;
     }
+
     public boolean remove(int index) {
         if (index < lecturesArray.length) {
             lecturesArray[index] = null;

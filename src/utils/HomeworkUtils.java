@@ -1,6 +1,6 @@
 package utils;
 
-import entity.Homework;
+import entities.Homework;
 
 public class HomeworkUtils {
 

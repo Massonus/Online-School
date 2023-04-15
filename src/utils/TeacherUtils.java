@@ -1,6 +1,6 @@
 package utils;
 
-import entity.Teacher;
+import entities.Teacher;
 
 public class TeacherUtils {
 

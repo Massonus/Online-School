@@ -1,11 +1,11 @@
 package utils;
 
-import entity.Course;
+import entities.Course;
 
 public class CourseUtils {
 
     public void CreateCourse() {
-        Course course = new Course(1, "First");
+        Course course = new Course();
     }
 
 }

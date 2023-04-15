@@ -1,7 +1,8 @@
-package entity;
+package entities;
 
-public class Lecture extends University {
+public class Lecture {
 
+    private static Homework[] homeworks;
     public static int count;
 
     private int personId;
@@ -10,11 +11,6 @@ public class Lecture extends University {
 
     private String description;
 
-    public Lecture(int id, String name, int personId) {
-        super(id, name);
-        this.personId = personId;
-        count++;
-    }
 
     public int getPersonId() {
         return personId;
@@ -27,16 +23,18 @@ public class Lecture extends University {
     public Lecture() {
     }
 
-    public Lecture(int id, String name) {
-        super(id, name);
+    public Lecture(int personId, String name, String description) {
+        this.personId = personId;
+        this.name = name;
+        this.description = description;
+        count++;
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
+
     public void setName(String name) {
         this.name = name;
     }
