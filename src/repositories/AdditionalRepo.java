@@ -1,9 +1,8 @@
 package repositories;
 
 import entity.Additional;
-import entity.University;
 
-public class AdditionalRepo extends UniversityRepo {
+public class AdditionalRepo implements AboutRepo {
 
 private static Additional[] additionals;
 
@@ -11,23 +10,34 @@ private static Additional[] additionals;
         return additionals;
     }
 
+
     @Override
-    public void getAll() {
-        super.getAll();
+    public void getIt() {
+        for (Additional additional : additionals) {
+            System.out.println(additional);
+        }
     }
 
     @Override
-    public void add(University university) {
-        super.add(university);
+    public void add() {
+
+        if (additionals != null && additionals.length > 0) {
+            if (additionals[0] != null) {
+                System.out.println("Exist");
+                return;
+            }
+        } else {
+            System.out.println("Error");
+        }
     }
 
     @Override
     public void getByld() {
-        super.getByld();
+
     }
 
     @Override
     public void deleteByld() {
-        super.deleteByld();
+
     }
 }

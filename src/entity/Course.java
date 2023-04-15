@@ -1,32 +1,43 @@
 package entity;
 
-public class Course extends University {
+public class Course {
 
-    public Course(int id, String name) {
-        super(id, name);
+    private int id;
 
-    }
-
-    public Course() {
-    }
+    private String name;
 
     private Student student;
     private Teacher teacher;
     private Lecture lecture;
 
-    private String name;
+    public Course() {
+    }
 
-    @Override
+    public Course(int id, String name, Student student, Teacher teacher, Lecture lecture) {
+        this.id = id;
+        this.name = name;
+        this.student = student;
+        this.teacher = teacher;
+        this.lecture = lecture;
+    }
+
+
     public String getName() {
         return name;
     }
 
-    @Override
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String toString() {
         return "Course{" +
                 "name='" + name + '\'' +

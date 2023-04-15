@@ -1,9 +1,30 @@
 package entity;
 
-public class Teacher extends University {
+public class Teacher {
+
+    private int id;
+
+    private String name;
 
     public Teacher(int id, String name) {
-        super(id, name);
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Teacher() {
@@ -11,6 +32,9 @@ public class Teacher extends University {
 
     @Override
     public String toString() {
-        return "Teacher{}";
+        return "Teacher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

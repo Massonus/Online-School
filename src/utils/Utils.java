@@ -126,7 +126,7 @@ public class Utils {
                         String teacherName = scanner4.nextLine();
                         teacher.setName(teacherName);
 
-                        System.out.println("\nFull lecture: " + lecture.getId() + " " + teacher);
+                        System.out.println("\nFull lecture: " + lecture.getPersonId() + " " + teacher);
 
                     }
 

@@ -15,7 +15,7 @@ public class LectureUtils {
 
     public void printLecture(Lecture lecture) {
         System.out.println("\nFull sixth lecture: " + lecture);
-        System.out.println("\nOnly id of sixth lecture: " + lecture.getId() + "\n");
+        System.out.println("\nOnly id of sixth lecture: " + lecture.getPersonId() + "\n");
     }
 
 
