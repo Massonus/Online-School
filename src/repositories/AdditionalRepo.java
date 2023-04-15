@@ -1,10 +1,10 @@
 package repositories;
 
-import entity.Additional;
+import entities.Additional;
 
 public class AdditionalRepo implements AboutRepo {
 
-private static Additional[] additionals;
+    private static Additional[] additionals;
 
     public static Additional[] getAdditionals() {
         return additionals;

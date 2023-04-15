@@ -1,10 +1,18 @@
-package entity;
+package entities;
 
 public class Additional {
 
     private int id;
 
     private String name;
+
+    public Additional() {
+    }
+
+    public Additional(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public int getId() {
         return id;
@@ -19,14 +27,6 @@ public class Additional {
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public Additional() {
-    }
-
-    public Additional(int id, String name) {
-        this.id = id;
         this.name = name;
     }
 }

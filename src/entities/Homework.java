@@ -1,4 +1,4 @@
-package entity;
+package entities;
 
 public class Homework {
     private int id;

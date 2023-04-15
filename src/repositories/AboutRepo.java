@@ -2,12 +2,12 @@ package repositories;
 
 public interface AboutRepo {
 
-    void getIt ();
+    void getIt();
 
-    void add ();
+    void add();
 
-    void getByld ();
+    void getByld();
 
-    void deleteByld ();
+    void deleteByld();
 
 }

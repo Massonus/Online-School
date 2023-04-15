@@ -1,12 +1,14 @@
-package entity;
+package entities;
 
-public class Teacher {
-
+public class Student {
     private int id;
 
     private String name;
 
-    public Teacher(int id, String name) {
+    public Student() {
+    }
+
+    public Student(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -25,16 +27,5 @@ public class Teacher {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Teacher() {
-    }
-
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

@@ -1,6 +1,6 @@
 package repositories;
 
-import entity.Teacher;
+import entities.Teacher;
 
 public class TeacherRepo implements AboutRepo {
 
@@ -12,7 +12,7 @@ public class TeacherRepo implements AboutRepo {
 
     @Override
     public void getIt() {
-        for (Teacher teacher  : teachers) {
+        for (Teacher teacher : teachers) {
             System.out.println(teacher);
         }
     }

@@ -1,8 +1,8 @@
 package repositories;
 
-import entity.Student;
+import entities.Student;
 
-public class StudentRepo implements AboutRepo{
+public class StudentRepo implements AboutRepo {
 
     private static Student[] students;
 

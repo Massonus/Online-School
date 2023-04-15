@@ -1,6 +1,6 @@
 package repositories;
 
-import entity.Lecture;
+import entities.Lecture;
 
 public class LectureRepo implements AboutRepo {
 

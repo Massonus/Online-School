@@ -1,6 +1,4 @@
-package entity;
-
-import repositories.HomeworkRepo;
+package entities;
 
 public class Lecture {
 

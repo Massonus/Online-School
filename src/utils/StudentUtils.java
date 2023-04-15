@@ -1,6 +1,6 @@
 package utils;
 
-import entity.Student;
+import entities.Student;
 
 public class StudentUtils {
 

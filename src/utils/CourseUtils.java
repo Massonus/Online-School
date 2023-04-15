@@ -1,6 +1,6 @@
 package utils;
 
-import entity.Course;
+import entities.Course;
 
 public class CourseUtils {
 

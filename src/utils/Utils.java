@@ -1,6 +1,6 @@
 package utils;
 
-import entity.*;
+import entities.*;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

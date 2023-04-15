@@ -1,6 +1,6 @@
 package repositories;
 
-import entity.Course;
+import entities.Course;
 
 public class CourseRepo implements AboutRepo {
 
@@ -9,6 +9,7 @@ public class CourseRepo implements AboutRepo {
     public static Course[] getCourses() {
         return courses;
     }
+
     @Override
     public void getIt() {
         for (Course course : courses) {

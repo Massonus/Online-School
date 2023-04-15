@@ -1,6 +1,6 @@
 package repositories;
 
-import entity.Homework;
+import entities.Homework;
 
 public class HomeworkRepo implements AboutRepo {
 
