@@ -5,7 +5,7 @@ public class Lecture {
     private static Homework[] homeworks;
     public static int count;
 
-    private int personId;
+    private Integer personId;
 
     private String name;
 

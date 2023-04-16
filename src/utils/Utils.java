@@ -2,6 +2,7 @@ package utils;
 
 import entities.*;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -9,25 +10,23 @@ import java.util.regex.Pattern;
 
 public class Utils {
 
-    Generalization<Lecture> generalization = new Generalization<>();
-    Lecture[] lectures = new Lecture[2];
     Scanner scanner = new Scanner(System.in);
     Scanner scanner1 = new Scanner(System.in);
     Scanner scanner2 = new Scanner(System.in);
     Scanner scanner3 = new Scanner(System.in);
     Scanner scanner4 = new Scanner(System.in);
     Scanner scanner5 = new Scanner(System.in);
-    Scanner scanner6 = new Scanner(System.in);
     Course course = new Course();
     Lecture lecture = new Lecture();
     Person person = new Person();
     Teacher teacher = new Teacher();
-    Lecture[] lectures1 = generalization.add(lectures);
-
+    final Integer[] lectures = new Integer[4];
+    SimpleIterator simpleIterator = new SimpleIterator();
+    Iterator<Integer> integerIterator = simpleIterator.getIterator(lectures);
     MyEx myEx = new MyEx();
-
     public void Console() {
-            int ch;
+
+        int ch;
 
             while (true) {
                 do {
@@ -42,6 +41,7 @@ public class Utils {
                     System.out.println("7 to print Massive");
                     System.out.println("8 to check data of Person");
                     System.out.println("9 to get Course\n");
+                    System.out.println("10 to see SimpleIterator");
 
 
                         try {
@@ -105,37 +105,35 @@ public class Utils {
                         break;
                     case 5:
 
-                        for (int i = 0; i < lectures1.length; i++) {
+                        for (int i = 0; i < lectures.length; i++) {
 
                             System.out.println("\nInput Lecture Id (only numbers)");
 
                             int id = scanner1.nextInt();
 
                             lecture.setPersonId(id);
-
-                            System.out.println("\nInput Lecture name");
+                         /*   System.out.println("\nInput Lecture name");
 
                             String name = scanner5.nextLine();
                             lecture.setName(name);
-
                             System.out.println("\nInput Lecture description");
 
                             String name3 = scanner6.nextLine();
-                            lecture.setDescription(name3);
+                            lecture.setDescription(name3);*/
 
-                            lectures1[i] = lecture;
-                            System.out.println(lectures1[i]);
+                            lectures[i] = lecture.getPersonId();
+                            /*System.out.println(lectures[i]);*/
 
-                            System.out.println("Input the id of teacher");
+                            /*System.out.println("Input the id of teacher");
 
                             int teacherId = scanner.nextInt();
                             teacher.setId(teacherId);
 
                             System.out.println("Input the name of teacher");
                             String teacherName = scanner4.nextLine();
-                            teacher.setName(teacherName);
+                            teacher.setName(teacherName);*/
 
-                            System.out.println("\nFull lecture: " + lecture.getPersonId() + " " + teacher);
+                            System.out.println("\nFull lecture: " + lecture + " " + teacher);
 
                         }
 
@@ -145,10 +143,7 @@ public class Utils {
                         break;
 
                     case 7:
-                        for (Lecture lecture1 : lectures1) {
-                            System.out.println(lecture1.getPersonId());
-
-                        }
+                        findAll();
                         break;
 
                     case 8:
@@ -172,6 +167,12 @@ public class Utils {
                         case 9:
                                     System.out.println(course.getId());
                                     myEx.getMessage();
+                                    break;
+                        case 10:
+                            System.out.println(integerIterator.next());
+                            System.out.println(integerIterator.hasNext());
+                            integerIterator.remove();
+                        break;
 
                 }
 
@@ -179,5 +180,9 @@ public class Utils {
 
     }
 
-
+    public void findAll() {
+        for (Integer integer : lectures) {
+            System.out.println(integer);
+        }
+    }
 }

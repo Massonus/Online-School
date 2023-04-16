@@ -2,7 +2,7 @@ package entities;
 
 public class Course {
 
-    private int id;
+    private Integer id;
 
     private String name;
 
