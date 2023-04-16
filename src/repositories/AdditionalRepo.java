@@ -1,28 +1,28 @@
 package repositories;
 
-import entities.Additional;
+import entities.AdditionalMaterials;
 
 public class AdditionalRepo implements AboutRepo {
 
-    private static Additional[] additionals;
+    private static AdditionalMaterials[] additionalMaterials;
 
-    public static Additional[] getAdditionals() {
-        return additionals;
+    public static AdditionalMaterials[] getAdditionals() {
+        return additionalMaterials;
     }
 
 
     @Override
     public void getIt() {
-        for (Additional additional : additionals) {
-            System.out.println(additional);
+        for (AdditionalMaterials additionalMaterials : AdditionalRepo.additionalMaterials) {
+            System.out.println(additionalMaterials);
         }
     }
 
     @Override
     public void add() {
 
-        if (additionals != null && additionals.length > 0) {
-            if (additionals[0] != null) {
+        if (additionalMaterials != null && additionalMaterials.length > 0) {
+            if (additionalMaterials[0] != null) {
                 System.out.println("Exist");
                 return;
             }

@@ -1,12 +1,12 @@
 package utils;
 
-import entities.Additional;
+import entities.AdditionalMaterials;
 
 public class AdditionalUtils {
-    Additional additional;
+    AdditionalMaterials additionalMaterials;
 
     void createUtils() {
-        Additional additional = new Additional();
-        System.out.println(additional);
+        AdditionalMaterials additionalMaterials = new AdditionalMaterials();
+        System.out.println(additionalMaterials);
     }
 }
