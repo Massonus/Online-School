@@ -1,12 +1,20 @@
 package utils;
 
+import java.io.IOException;
+
 public class Generalization<E> {
     E[] lecturesArray;
 
-    public int size() {
-        final int length = lecturesArray.length;
-        System.out.println(length);
-        return length;
+    public int size() throws IOException {
+
+        try {
+            final int length = lecturesArray.length;
+            System.out.println(length);
+            return length;
+        } catch (NullPointerException e) {
+            throw new IOException(e);
+        }
+
     }
 
     public boolean isEmpty() {
@@ -27,8 +35,13 @@ public class Generalization<E> {
     }
 
     public E[] add(E[] value) {
-        lecturesArray = value;
-        return lecturesArray;
+        try {
+            lecturesArray = value;
+            return lecturesArray;
+        } catch (NullPointerException e) {
+            throw new ArithmeticException();
+        }
+
 
     }
 
