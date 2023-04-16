@@ -4,8 +4,6 @@ import utils.CourseUtils;
 import utils.LectureUtils;
 import utils.Utils;
 
-import java.util.NoSuchElementException;
-
 public class Main {
     public static void main(String[] args) {
         Utils utils = new Utils();
@@ -16,7 +14,6 @@ public class Main {
 
         final Lecture[] lectures = LectureRepo.getLectures();
 
-
         LectureUtils lectureUtils = new LectureUtils();
         lectureUtils.CreateLectures();
 
@@ -25,9 +22,7 @@ public class Main {
         CourseUtils courseUtils = new CourseUtils();
 
 
-
         courseUtils.CreateCourse();
-
 
 
     }
