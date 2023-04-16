@@ -1,14 +1,18 @@
 import entities.Lecture;
 import repositories.LectureRepo;
+import utils.AddController;
+import utils.Controller;
 import utils.CourseUtils;
 import utils.LectureUtils;
-import utils.Utils;
 
 public class Main {
     public static void main(String[] args) {
-        Utils utils = new Utils();
+        AddController addController = new AddController();
+        addController.Menu();
 
-        utils.Console();
+        Controller controller = new Controller();
+
+        controller.Console();
 
         LectureRepo.createLectureMas(5);
 
@@ -20,7 +24,6 @@ public class Main {
         System.out.println("Sum of Lectures: " + Lecture.count);
 
         CourseUtils courseUtils = new CourseUtils();
-
 
         courseUtils.CreateCourse();
 

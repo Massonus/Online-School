@@ -17,7 +17,7 @@ public class Lecture {
     }
 
     public void setPersonId(int personId) {
-            this.personId = personId;
+        this.personId = personId;
 
     }
 
