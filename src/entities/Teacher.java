@@ -1,14 +1,20 @@
 package entities;
 
-public class Teacher {
+import java.util.Comparator;
+import java.util.Objects;
+
+public class Teacher implements Comparator<Teacher> {
 
     private Integer id;
 
-    private String name;
+    private String firstName;
 
-    public Teacher(int id, String name) {
+    private String lastName;
+
+    public Teacher(Integer id, String firstName, String lastName) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public int getId() {
@@ -19,22 +25,49 @@ public class Teacher {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public Teacher() {
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
         return "Teacher{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Teacher teacher = (Teacher) o;
+        return lastName.equals(teacher.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lastName);
+    }
+
+    @Override
+    public int compare(Teacher o1, Teacher o2) {
+        return this.lastName.compareTo(o1.lastName);
     }
 }

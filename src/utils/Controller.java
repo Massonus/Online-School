@@ -2,10 +2,7 @@ package utils;
 
 import entities.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,11 +12,16 @@ public class Controller {
     Scanner scanner2 = new Scanner(System.in);
     Scanner scanner3 = new Scanner(System.in);
     Scanner scanner4 = new Scanner(System.in);
+    Scanner scanner5 = new Scanner(System.in);
+    Scanner scanner6 = new Scanner(System.in);
+    Scanner scanner7 = new Scanner(System.in);
     MyEx myEx = new MyEx();
-    Course course = new Course();
     Person person = new Person();
-    Teacher teacher = new Teacher();
-    List<Lecture> lectures = new ArrayList<>();
+    List<Course> courses = new ArrayList<>();
+    Set<Student> students = new TreeSet<>();
+    Set<Teacher> teachers = new TreeSet<>();
+    Set<Lecture> lectures = new TreeSet<>();
+
 
     public void Console() {
 
@@ -35,9 +37,12 @@ public class Controller {
                 System.out.println("4 to choose Student");
                 System.out.println("5 to choose Lecture");
                 System.out.println("6 to close the program");
-                System.out.println("7 to print List");
-                System.out.println("8 to check data of Person");
-                System.out.println("9 to get Course\n");
+                System.out.println("7 to print List of lectures");
+                System.out.println("8 to print List of courses");
+                System.out.println("9 to print List of teachers");
+                System.out.println("10 to print List of students");
+                System.out.println("11 to check data of Person");
+                System.out.println("12 to close Menu\n");
 
 
                 try {
@@ -51,22 +56,48 @@ public class Controller {
 
             switch (ch) {
                 case 1:
-                    System.out.println("\nInput Course Id (only numbers)");
-                    int id2 = scanner.nextInt();
+                    for (int i = 0; i < 2; i++) {
+                        Course course = new Course();
 
-                    course.setId(id2);
+                        System.out.println("\nInput Course Id (only numbers)");
+                        int id = scanner.nextInt();
 
-                    System.out.println("\nInput Course name");
+                        course.setId(id);
 
-                    String name2 = scanner1.nextLine();
-                    course.setName(name2);
-                    System.out.println(course);
+                        System.out.println("\nInput Course name");
+
+                        String name = scanner1.nextLine();
+                        course.setName(name);
+                        System.out.println(course);
+                        courses.add(course);
+                    }
                     break;
                 case 2:
-                    System.out.println(teacher.getName());
+                    for (int i = 0; i < 2; i++){
+
+
+                    Teacher teacher = new Teacher();
+
+                    System.out.println("\nInput Teacher Id (only numbers)");
+                    int id = scanner.nextInt();
+
+                    teacher.setId(id);
+
+                    System.out.println("\nInput Teacher first name");
+
+                    String name = scanner1.nextLine();
+                    teacher.setFirstName(name);
+
+                    System.out.println("\nInput Teacher last name");
+
+                    String name1 = scanner2.nextLine();
+                    teacher.setLastName(name1);
+                    System.out.println(teacher);
+                    teachers.add(teacher);
+                }
                     break;
                 case 3:
-                    System.out.println("\nInput Person firstname");
+                    System.out.println("\nInput Person first name");
 
                     String firstname = scanner2.nextLine();
                     person.setFirstname(firstname);
@@ -87,43 +118,55 @@ public class Controller {
                     System.out.println(person);
                     break;
                 case 4:
-                    System.out.println("Input Student's Id (only numbers)");
-                    int id1 = scanner.nextInt();
 
-                    person.setRole(Role.STUDENT);
-                    person.setId(id1);
-                    System.out.println("Input Student's Course id");
-                    String courseId = scanner1.nextLine();
-                    person.setCourseId(courseId);
+                    for (int i = 0; i < 2; i++) {
 
-                    System.out.println(person);
+                        Student student = new Student();
 
+                        System.out.println("\nInput Student Id (only numbers)");
+
+                        int id = scanner.nextInt();
+
+                        student.setId(id);
+
+                        System.out.println("\nInput Student first name");
+
+                        String name = scanner1.nextLine();
+                        student.setFirstName(name);
+
+                        System.out.println("\nInput Student last name");
+
+                        String name1 = scanner2.nextLine();
+                        student.setLastName(name1);
+                        System.out.println(student);
+                        students.add(student);
+                    }
                     break;
                 case 5:
-                    int id;
-                    String name;
-                    String name1;
+
+
                     for (int i = 0; i < 3; i++) {
 
                         Lecture lecture = new Lecture();
 
                         System.out.println("\nInput Lecture Id (only numbers)");
 
-                        id = scanner.nextInt();
+                        int id3= scanner.nextInt();
 
-                        lecture.setPersonId(id);
+                        lecture.setPersonId(id3);
                         System.out.println("\nInput Lecture name");
 
-                        name = scanner1.nextLine();
-                        lecture.setName(name);
+                        String name3 = scanner1.nextLine();
+                        lecture.setName(name3);
                         System.out.println("\nInput Lecture description");
 
-                        name1 = scanner2.nextLine();
-                        lecture.setDescription(name1);
+                       String name4 = scanner2.nextLine();
+                        lecture.setDescription(name4);
 
                         lectures.add(lecture);
 
                         System.out.println("\nFull lecture: " + lecture);
+
 
                     }
 
@@ -133,10 +176,21 @@ public class Controller {
                     break;
 
                 case 7:
-                    findAll();
+                    printLectures();
                     break;
 
                 case 8:
+                    printCourses();
+                    break;
+                case 9:
+                    printTeachers();
+                    break;
+
+                case 10:
+                    printStudents();
+                    break;
+
+                case 11:
                     Pattern pattern = Pattern.compile("(\\w+)");
                     Matcher matcher = pattern.matcher(person.getFirstname());
 
@@ -154,7 +208,8 @@ public class Controller {
                     }
                     System.out.println(matcher.groupCount());
                     break;
-
+                case 12:
+                    return;
 
             }
 
@@ -162,9 +217,32 @@ public class Controller {
 
     }
 
-    public void findAll() {
+    public void printLectures() {
+
         for (Lecture lecture1 : lectures) {
             System.out.println(lecture1);
         }
+
+    }
+    public void printCourses() {
+        List list = new ArrayList(courses);
+        Comparator comparatorByName = Comparator.comparing(Course::getName);
+        Collections.sort(list, comparatorByName);
+        System.out.println(list);
+
+    }
+    public void printStudents() {
+        List list = new ArrayList(students);
+        Comparator comparatorLastByName = Comparator.comparing(Student::getLastName);
+        Collections.sort(list, comparatorLastByName);
+        System.out.println(list);
+
+    }
+    public void printTeachers() {
+        List list = new ArrayList(teachers);
+        Comparator comparatorLastByName = Comparator.comparing(Teacher::getLastName);
+        Collections.sort(list, comparatorLastByName);
+        System.out.println(list);
+
     }
 }
