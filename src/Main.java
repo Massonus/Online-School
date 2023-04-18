@@ -7,8 +7,6 @@ import utils.LectureUtils;
 
 public class Main {
     public static void main(String[] args) {
-        AddController addController = new AddController();
-        addController.Menu();
 
         Controller controller = new Controller();
 
@@ -26,6 +24,9 @@ public class Main {
         CourseUtils courseUtils = new CourseUtils();
 
         courseUtils.CreateCourse();
+
+        AddController addController = new AddController();
+        addController.Menu();
 
 
     }

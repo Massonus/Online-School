@@ -1,6 +1,9 @@
 package entities;
 
-public class AdditionalMaterials {
+import java.util.Comparator;
+import java.util.Objects;
+
+public class AdditionalMaterials implements Comparator<AdditionalMaterials>{
 
     private Integer id;
 
@@ -60,4 +63,24 @@ public class AdditionalMaterials {
                 ", lectureId=" + lectureId +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AdditionalMaterials that = (AdditionalMaterials) o;
+        return id.equals(that.id) && name.equals(that.name) && lectureId.equals(that.lectureId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, lectureId);
+    }
+
+    @Override
+    public int compare(AdditionalMaterials o1, AdditionalMaterials o2) {
+        return this.name.compareTo(o1.name);
+    }
+
+
 }
