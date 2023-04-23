@@ -15,13 +15,17 @@ public class Controller {
     Scanner scanner5 = new Scanner(System.in);
     Scanner scanner6 = new Scanner(System.in);
     Scanner scanner7 = new Scanner(System.in);
+    Scanner scanner8 = new Scanner(System.in);
+    Scanner scanner9 = new Scanner(System.in);
+    Scanner scanner10 = new Scanner(System.in);
     MyEx myEx = new MyEx();
     Person person = new Person();
     List<Course> courses = new ArrayList<>();
-    Set<Student> students = new TreeSet<>();
-    Set<Teacher> teachers = new TreeSet<>();
-    Set<Lecture> lectures = new TreeSet<>();
-
+    List<Student> students = new ArrayList<>();
+    List<Teacher> teachers = new ArrayList<>();
+    List<Lecture> lectures = new ArrayList<>();
+    Map<String, List<Homework>> homeworkMap = new HashMap<>();
+    Map<String, List<AdditionalMaterials>> additionalMap = new HashMap<>();
 
     public void Console() {
 
@@ -36,13 +40,17 @@ public class Controller {
                 System.out.println("3 to choose Person");
                 System.out.println("4 to choose Student");
                 System.out.println("5 to choose Lecture");
-                System.out.println("6 to close the program");
-                System.out.println("7 to print List of lectures");
-                System.out.println("8 to print List of courses");
-                System.out.println("9 to print List of teachers");
-                System.out.println("10 to print List of students");
-                System.out.println("11 to check data of Person");
-                System.out.println("12 to close Menu\n");
+                System.out.println("6 to choose Homework");
+                System.out.println("7 to choose Additional materials");
+                System.out.println("8 to print List of lectures");
+                System.out.println("9 to print List of courses");
+                System.out.println("10 to print List of teachers");
+                System.out.println("11 to print List of students");
+                System.out.println("12 to print List of Homework");
+                System.out.println("13 to print List of Additional materials");
+                System.out.println("14 to check data of Person");
+                System.out.println("15 to close the program");
+                System.out.println("16 to close Menu");
 
 
                 try {
@@ -52,7 +60,7 @@ public class Controller {
                     ch = scanner1.nextInt();
                 }
 
-            } while (ch < 1 && ch > 6);
+            } while (ch < 1 && ch > 16);
 
             switch (ch) {
                 case 1:
@@ -73,28 +81,27 @@ public class Controller {
                     }
                     break;
                 case 2:
-                    for (int i = 0; i < 2; i++){
+                    for (int i = 0; i < 2; i++) {
 
+                        Teacher teacher = new Teacher();
 
-                    Teacher teacher = new Teacher();
+                        System.out.println("\nInput Teacher Id (only numbers)");
+                        int id = scanner.nextInt();
 
-                    System.out.println("\nInput Teacher Id (only numbers)");
-                    int id = scanner.nextInt();
+                        teacher.setId(id);
 
-                    teacher.setId(id);
+                        System.out.println("\nInput Teacher first name");
 
-                    System.out.println("\nInput Teacher first name");
+                        String name = scanner1.nextLine();
+                        teacher.setFirstName(name);
 
-                    String name = scanner1.nextLine();
-                    teacher.setFirstName(name);
+                        System.out.println("\nInput Teacher last name");
 
-                    System.out.println("\nInput Teacher last name");
-
-                    String name1 = scanner2.nextLine();
-                    teacher.setLastName(name1);
-                    System.out.println(teacher);
-                    teachers.add(teacher);
-                }
+                        String name1 = scanner2.nextLine();
+                        teacher.setLastName(name1);
+                        System.out.println(teacher);
+                        teachers.add(teacher);
+                    }
                     break;
                 case 3:
                     System.out.println("\nInput Person first name");
@@ -118,7 +125,6 @@ public class Controller {
                     System.out.println(person);
                     break;
                 case 4:
-
                     for (int i = 0; i < 2; i++) {
 
                         Student student = new Student();
@@ -143,15 +149,16 @@ public class Controller {
                     }
                     break;
                 case 5:
+                    System.out.println("Enter how many lectures do you want\n");
+                    int l = scanner5.nextInt();
 
-
-                    for (int i = 0; i < 3; i++) {
+                    for (int i = 0; i < l; i++) {
 
                         Lecture lecture = new Lecture();
 
                         System.out.println("\nInput Lecture Id (only numbers)");
 
-                        int id3= scanner.nextInt();
+                        int id3 = scanner.nextInt();
 
                         lecture.setPersonId(id3);
                         System.out.println("\nInput Lecture name");
@@ -160,37 +167,117 @@ public class Controller {
                         lecture.setName(name3);
                         System.out.println("\nInput Lecture description");
 
-                       String name4 = scanner2.nextLine();
+                        String name4 = scanner2.nextLine();
                         lecture.setDescription(name4);
 
                         lectures.add(lecture);
 
                         System.out.println("\nFull lecture: " + lecture);
 
-
                     }
 
                     break;
                 case 6:
-                    System.exit(0);
-                    break;
+                    System.out.println("Enter how many homeworks do you want\n");
+                    int many = scanner.nextInt();
 
+                    for (int i = 0; i < many; i++) {
+                        Homework homework = new Homework();
+                        List<Homework> homeworks = new ArrayList<>();
+                        System.out.println("Input Homework id");
+
+                        int lectureId = scanner6.nextInt();
+                        homework.setLectureId(lectureId);
+
+                        System.out.println("Input Homework task");
+
+                        String name = scanner7.nextLine();
+                        homework.setTask(name);
+
+                        homeworks.add(homework);
+                        String k = String.valueOf(lectureId);
+                        homeworkMap.put(k, homeworks);
+                    }
+
+                    break;
                 case 7:
+                    System.out.println("Enter how many Materials do you want\n");
+                    int many1 = scanner1.nextInt();
+
+                    for (int i = 0; i < many1; i++) {
+                        AdditionalMaterials additionalMaterials = new AdditionalMaterials();
+                        List<AdditionalMaterials> additionalMaterialsList = new ArrayList<>();
+
+                        System.out.println("Input Additional id");
+
+                        int lectureId = scanner8.nextInt();
+                        additionalMaterials.setLectureId(lectureId);
+
+                        System.out.println("Input Additional task");
+
+                        String name = scanner9.nextLine();
+                        additionalMaterials.setName(name);
+
+                        additionalMaterialsList.add(additionalMaterials);
+
+                        String k = String.valueOf(i + 1);
+                        additionalMap.put(k, additionalMaterialsList);
+                    }
+                    break;
+                case 8:
                     printLectures();
                     break;
 
-                case 8:
+                case 9:
                     printCourses();
                     break;
-                case 9:
+                case 10:
                     printTeachers();
                     break;
 
-                case 10:
+                case 11:
                     printStudents();
                     break;
+                case 12:
+                    homeworkMap.forEach((k, v) -> {
+                        System.out.println(k + " " + v);
+                    });
 
-                case 11:
+                    System.out.println("Choose the element what you want to delete");
+                    String del = scanner10.nextLine();
+
+                    homeworkMap.remove(del);
+
+                    homeworkMap.forEach((k, v) -> {
+                        System.out.println(k + " " + v);
+                    });
+                    System.out.println("Put a new element");
+                    Homework homework = new Homework();
+                    List<Homework> homeworks = new ArrayList<>();
+
+                    System.out.println("Input Homework id");
+                    int lectureId = scanner6.nextInt();
+                    homework.setLectureId(lectureId);
+
+                    System.out.println("Input Homework task");
+
+                    String name = scanner7.nextLine();
+                    homework.setTask(name);
+
+                    homeworks.add(homework);
+                    String k = String.valueOf(lectureId);
+                    homeworkMap.put(k, homeworks);
+
+                    break;
+                case 13:
+                    additionalMap.forEach((k1, v) -> {
+                        System.out.println(k1 + " " + v);
+                    });
+
+
+                    break;
+
+                case 14:
                     Pattern pattern = Pattern.compile("(\\w+)");
                     Matcher matcher = pattern.matcher(person.getFirstname());
 
@@ -208,8 +295,14 @@ public class Controller {
                     }
                     System.out.println(matcher.groupCount());
                     break;
-                case 12:
+
+                case 15:
+                    System.exit(0);
+                    break;
+
+                case 16:
                     return;
+
 
             }
 
@@ -224,6 +317,7 @@ public class Controller {
         }
 
     }
+
     public void printCourses() {
         List list = new ArrayList(courses);
         Comparator comparatorByName = Comparator.comparing(Course::getName);
@@ -231,6 +325,7 @@ public class Controller {
         System.out.println(list);
 
     }
+
     public void printStudents() {
         List list = new ArrayList(students);
         Comparator comparatorLastByName = Comparator.comparing(Student::getLastName);
@@ -238,6 +333,7 @@ public class Controller {
         System.out.println(list);
 
     }
+
     public void printTeachers() {
         List list = new ArrayList(teachers);
         Comparator comparatorLastByName = Comparator.comparing(Teacher::getLastName);
