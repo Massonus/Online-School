@@ -1,0 +1,5 @@
+data
+messaga
+level
+name
+stacktrace

@@ -220,7 +220,7 @@ public class Controller {
 
                         additionalMaterialsList.add(additionalMaterials);
 
-                        String k = String.valueOf(i + 1);
+                        String k = String.valueOf(lectureId);
                         additionalMap.put(k, additionalMaterialsList);
                     }
                     break;
