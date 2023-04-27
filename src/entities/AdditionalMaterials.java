@@ -3,7 +3,7 @@ package entities;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class AdditionalMaterials implements Comparator<AdditionalMaterials>{
+public class AdditionalMaterials implements Comparator<AdditionalMaterials> {
 
     private Integer id;
 

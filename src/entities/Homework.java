@@ -1,34 +1,25 @@
 package entities;
 
-public class Homework {
-    private Integer id;
+import java.util.Objects;
 
-    private String lectureId;
+public class Homework {
+    private Integer lectureId;
 
     private String task;
 
     public Homework() {
     }
 
-    public Homework(int id, String lectureId, String task) {
-        this.id = id;
+    public Homework(Integer lectureId, String task) {
         this.lectureId = lectureId;
         this.task = task;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getLectureId() {
+    public Integer getLectureId() {
         return lectureId;
     }
 
-    public void setLectureId(String lectureId) {
+    public void setLectureId(Integer lectureId) {
         this.lectureId = lectureId;
     }
 
@@ -43,9 +34,21 @@ public class Homework {
     @Override
     public String toString() {
         return "Homework{" +
-                "id=" + id +
-                ", lectureId='" + lectureId + '\'' +
+                "lectureId=" + lectureId +
                 ", task='" + task + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Homework homework = (Homework) o;
+        return lectureId.equals(homework.lectureId) && task.equals(homework.task);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lectureId, task);
     }
 }

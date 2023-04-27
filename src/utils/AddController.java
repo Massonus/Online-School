@@ -4,21 +4,19 @@ import Comparators.CompareById;
 import Comparators.CompareByLectureId;
 import entities.AdditionalMaterials;
 import entities.ResourceType;
-import entities.Teacher;
 
 import java.util.*;
 
 public class AddController {
 
-    AdditionalMaterials additionalMaterials = new AdditionalMaterials(1, "Math", 13, ResourceType.BOOK);
+    AdditionalMaterials additionalMaterials = new AdditionalMaterials(5, "Math", 13, ResourceType.BOOK);
     AdditionalMaterials additionalMaterials1 = new AdditionalMaterials(2, "UK", 20, ResourceType.URL);
-    AdditionalMaterials additionalMaterials2 = new AdditionalMaterials(3, "Geo", 15, ResourceType.VIDEO);
+    AdditionalMaterials additionalMaterials2 = new AdditionalMaterials(10, "Geo", 15, ResourceType.VIDEO);
     Scanner scanner = new Scanner(System.in);
     List<AdditionalMaterials> additionals = new ArrayList<>();
 
     Comparator comparatorById = new CompareById();
     Comparator comparatorByLectureId = new CompareByLectureId();
-
 
 
     public void Menu() {

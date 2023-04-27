@@ -8,6 +8,7 @@ public class Course implements Comparator<Course> {
     private Integer id;
 
     private String name;
+
     public Course() {
     }
 
