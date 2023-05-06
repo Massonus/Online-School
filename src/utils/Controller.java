@@ -51,6 +51,7 @@ public class Controller {
                 System.out.println("14 to check data of Person");
                 System.out.println("15 to close the program");
                 System.out.println("16 to close Menu");
+                System.out.println("17 to see Threads");
 
 
                 try {
@@ -302,6 +303,8 @@ public class Controller {
 
                 case 16:
                     return;
+
+                case 17:
 
 
             }
