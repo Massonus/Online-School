@@ -1,5 +1,6 @@
 package utils;
 
+import CheckLog.Logger;
 import entities.*;
 
 import java.util.*;
@@ -19,6 +20,7 @@ public class Controller {
     Scanner scanner9 = new Scanner(System.in);
     Scanner scanner10 = new Scanner(System.in);
     MyEx myEx = new MyEx();
+    Logger logger = new Logger();
     Person person = new Person();
     List<Course> courses = new ArrayList<>();
     List<Student> students = new ArrayList<>();
@@ -51,7 +53,8 @@ public class Controller {
                 System.out.println("14 to check data of Person");
                 System.out.println("15 to close the program");
                 System.out.println("16 to close Menu");
-                System.out.println("17 to see Threads");
+                System.out.println("17 to print Logger");
+                System.out.println("18 to add info to the File");
 
 
                 try {
@@ -305,7 +308,12 @@ public class Controller {
                     return;
 
                 case 17:
+                logger.Logging();
+                break;
 
+                case 18:
+                    logger.addInfo("src/CheckLog/Logging.txt", "Added");
+                    break;
 
             }
 
