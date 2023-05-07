@@ -1,7 +1,7 @@
 package utils;
 
-import Comparators.CompareById;
-import Comparators.CompareByLectureId;
+import comparators.CompareById;
+import comparators.CompareByLectureId;
 import entities.AdditionalMaterials;
 import entities.ResourceType;
 

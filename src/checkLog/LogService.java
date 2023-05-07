@@ -1,4 +1,4 @@
-package CheckLog;
+package checkLog;
 
 import java.io.*;
 

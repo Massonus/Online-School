@@ -1,6 +1,6 @@
 package utils;
 
-import CheckLog.Logger;
+import checkLog.Logger;
 import entities.*;
 
 import java.util.*;
