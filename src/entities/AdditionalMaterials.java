@@ -1,9 +1,10 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class AdditionalMaterials implements Comparator<AdditionalMaterials> {
+public class AdditionalMaterials implements Comparator<AdditionalMaterials>, Serializable{
 
     private Integer id;
 

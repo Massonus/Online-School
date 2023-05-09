@@ -1,9 +1,10 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Teacher implements Comparator<Teacher> {
+public class Teacher implements Comparator<Teacher>, Serializable {
 
     private Integer id;
 
