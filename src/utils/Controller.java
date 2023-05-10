@@ -3,6 +3,7 @@ package utils;
 import checkLog.Logger;
 import entities.*;
 
+import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -55,6 +56,8 @@ public class Controller {
                 System.out.println("16 to close Menu");
                 System.out.println("17 to print Logger");
                 System.out.println("18 to add info to the File");
+                System.out.println("19 to do Serialization");
+                System.out.println("20 to do Deserialization");
 
 
                 try {
@@ -278,7 +281,6 @@ public class Controller {
                         System.out.println(k1 + " " + v);
                     });
 
-
                     break;
 
                 case 14:
@@ -308,11 +310,19 @@ public class Controller {
                     return;
 
                 case 17:
-                logger.Logging();
-                break;
+                    logger.Logging();
+                    break;
 
                 case 18:
                     logger.addInfo("src/CheckLog/Logging.txt", "Added");
+                    break;
+
+                case 19:
+                    serial("src/utils/ser.txt");
+                    break;
+
+                case 20:
+                    deSerial("src/utils/ser.txt");
                     break;
 
             }
@@ -352,4 +362,41 @@ public class Controller {
         System.out.println(list);
 
     }
+
+    static void serial(final String path) {
+        final File file = new File(path);
+        final AdditionalMaterials additionalMaterials = new AdditionalMaterials(4, "Math", 56, ResourceType.URL);
+        final Homework homework = new Homework(34, "Task 24");
+        final Lecture lecture = new Lecture(4, "Second", "About plus and minus");
+        final Student student = new Student(23, "Ivan", "Prohorov");
+        final Teacher teacher = new Teacher(45, "Maria", "Ostapenko");
+
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(file))) {
+            outputStream.writeObject(additionalMaterials);
+            outputStream.writeObject(homework);
+            outputStream.writeObject(lecture);
+            outputStream.writeObject(student);
+            outputStream.writeObject(teacher);
+            System.out.println("Serialization completed successfully: \n" + additionalMaterials + "\n" + homework + "\n" + lecture + "\n" + student + "\n" + teacher);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void deSerial(final String path) {
+        final File file = new File(path);
+
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file))) {
+            final AdditionalMaterials deSer = (AdditionalMaterials) inputStream.readObject();
+            final Homework deSer1 = (Homework) inputStream.readObject();
+            final Lecture deSer2 = (Lecture) inputStream.readObject();
+            final Student deSer3 = (Student) inputStream.readObject();
+            final Teacher deSer4 = (Teacher) inputStream.readObject();
+            System.out.println("Deserialization completed successfully: \n" + deSer + "\n" + deSer1 + "\n" + deSer2 + "\n" + deSer3 + "\n" + deSer4);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

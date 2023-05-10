@@ -1,8 +1,9 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Homework {
+public class Homework implements Serializable {
     private Integer lectureId;
 
     private String task;

@@ -1,6 +1,8 @@
 package entities;
 
-public class Lecture {
+import java.io.Serializable;
+
+public class Lecture implements Serializable {
 
     private static Homework[] homeworks;
     public static int count;
