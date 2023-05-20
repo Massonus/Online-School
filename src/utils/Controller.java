@@ -5,6 +5,7 @@ import entities.*;
 
 import java.io.*;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -58,6 +59,8 @@ public class Controller {
                 System.out.println("18 to add info to the File");
                 System.out.println("19 to do Serialization");
                 System.out.println("20 to do Deserialization");
+                System.out.println("19 to do Serialization");
+                System.out.println("21 to see filterLecture");
 
 
                 try {
@@ -164,18 +167,20 @@ public class Controller {
                         Lecture lecture = new Lecture();
 
                         System.out.println("\nInput Lecture Id (only numbers)");
-
                         int id3 = scanner.nextInt();
-
                         lecture.setPersonId(id3);
-                        System.out.println("\nInput Lecture name");
 
+                        System.out.println("\nInput Lecture name");
                         String name3 = scanner1.nextLine();
                         lecture.setName(name3);
-                        System.out.println("\nInput Lecture description");
 
+                        System.out.println("\nInput Lecture description");
                         String name4 = scanner2.nextLine();
                         lecture.setDescription(name4);
+
+                        System.out.println("\nInput Lecture date");
+                        String name5 = scanner2.nextLine();
+                        lecture.setDate(name5);
 
                         lectures.add(lecture);
 
@@ -277,8 +282,9 @@ public class Controller {
 
                     break;
                 case 13:
-                    additionalMap.forEach((k1, v) -> {
-                        System.out.println(k1 + " " + v);
+
+                    additionalMap.forEach((a, b) -> {
+                        System.out.println(a + " " + b);
                     });
 
                     break;
@@ -325,10 +331,24 @@ public class Controller {
                     deSerial("src/utils/ser.txt");
                     break;
 
+                case 21:
+                    filterLectures();
+
             }
 
         }
 
+    }
+
+    public void filterLectures() {
+        List<Lecture> result = LectureUtils.filter(lectures, a -> a.getDate().startsWith("18.05.2023") || a.getDate().endsWith("21.05.2023"));
+        System.out.println(result);
+
+        Predicate<Lecture> func1 = a -> a.getDate().equals("19.05.2023");
+        Predicate<Lecture> func2 = a -> a.getDate().equals("21.05.2023");
+
+        lectures = LectureUtils.filter(lectures, func1.and(func2));
+        System.out.println("between - " + lectures);
     }
 
     public void printLectures() {
@@ -367,7 +387,7 @@ public class Controller {
         final File file = new File(path);
         final AdditionalMaterials additionalMaterials = new AdditionalMaterials(4, "Math", 56, ResourceType.URL);
         final Homework homework = new Homework(34, "Task 24");
-        final Lecture lecture = new Lecture(4, "Second", "About plus and minus");
+        final Lecture lecture = new Lecture(4, "Second", "About plus and minus", "12.z05.2023");
         final Student student = new Student(23, "Ivan", "Prohorov");
         final Teacher teacher = new Teacher(45, "Maria", "Ostapenko");
 

@@ -13,6 +13,8 @@ public class Lecture implements Serializable {
 
     private String description;
 
+    private String date;
+
 
     public int getPersonId() {
         return personId;
@@ -26,11 +28,11 @@ public class Lecture implements Serializable {
     public Lecture() {
     }
 
-    public Lecture(int personId, String name, String description) {
+    public Lecture(Integer personId, String name, String description, String date) {
         this.personId = personId;
         this.name = name;
         this.description = description;
-        count++;
+        this.date = date;
     }
 
     public String getName() {
@@ -50,12 +52,21 @@ public class Lecture implements Serializable {
         this.description = description;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Lecture{" +
                 "personId=" + personId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", date=" + date +
                 '}';
     }
 }
