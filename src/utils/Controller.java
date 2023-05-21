@@ -12,6 +12,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,9 +31,11 @@ public class Controller {
     Scanner scanner8 = new Scanner(System.in);
     Scanner scanner9 = new Scanner(System.in);
     Scanner scanner10 = new Scanner(System.in);
+    Scanner scanner11 = new Scanner(System.in);
     MyEx myEx = new MyEx();
     Logger logger = new Logger();
     Person person = new Person();
+    List<Person> persons = new ArrayList<>();
     List<Course> courses = new ArrayList<>();
     List<Student> students = new ArrayList<>();
     List<Teacher> teachers = new ArrayList<>();
@@ -46,6 +49,7 @@ public class Controller {
         int ch;
 
         while (true) {
+            Scanner scanner12 = new Scanner(System.in);
             do {
 
                 System.out.println("Choose your category, use only numbers from 1 to 6: \n");
@@ -75,19 +79,25 @@ public class Controller {
                 System.out.println("23 to see Homework deadline");
                 System.out.println("24 to print filtered List of teachers");
                 System.out.println("25 to print file with logs");
+                System.out.println("26 to print dublicates");
+                System.out.println("27 to print first lecture");
+                System.out.println("28 to print how many INFOes in Logging.txt");
 
                 try {
-                    ch = scanner.nextInt();
+                    ch = scanner12.nextInt();
                 } catch (NoSuchElementException e) {
                     System.out.println(e);
                     ch = scanner1.nextInt();
                 }
 
-            } while (ch < 1 && ch > 25);
+            } while (ch < 1 && ch > 27);
 
             switch (ch) {
                 case 1:
-                    for (int i = 0; i < 2; i++) {
+                    System.out.println("Enter how many courses do you want\n");
+                    int c = scanner9.nextInt();
+
+                    for (int i = 0; i < c; i++) {
                         Course course = new Course();
 
                         System.out.println("\nInput Course Id (only numbers)");
@@ -104,7 +114,10 @@ public class Controller {
                     }
                     break;
                 case 2:
-                    for (int i = 0; i < 2; i++) {
+                    System.out.println("Enter how many teachers do you want\n");
+                    int t = scanner11.nextInt();
+
+                    for (int i = 0; i < t; i++) {
 
                         Teacher teacher = new Teacher();
 
@@ -127,28 +140,40 @@ public class Controller {
                     }
                     break;
                 case 3:
-                    System.out.println("\nInput Person first name");
+                    System.out.println("Enter how many persons do you want\n");
+                    int p = scanner6.nextInt();
 
-                    String firstname = scanner2.nextLine();
-                    person.setFirstname(firstname);
+                    for (int i = 0; i < p; i++) {
+                        Person person = new Person();
 
-                    System.out.println("\nInput Person lastname");
-                    String lastname = scanner1.nextLine();
-                    person.setLastname(lastname);
+                        System.out.println("\nInput Person first name");
 
-                    System.out.println("\nInput Person phone");
-                    String phone = scanner3.nextLine();
-                    person.setPhone(phone);
+                        String firstname = scanner2.nextLine();
+                        person.setFirstname(firstname);
 
-                    System.out.println("\nInput Person email");
+                        System.out.println("\nInput Person lastname");
+                        String lastname = scanner1.nextLine();
+                        person.setLastname(lastname);
 
-                    String email = scanner4.nextLine();
-                    person.setEmail(email);
+                        System.out.println("\nInput Person phone");
+                        String phone = scanner3.nextLine();
+                        person.setPhone(phone);
 
-                    System.out.println(person);
+                        System.out.println("\nInput Person email");
+
+                        String email = scanner4.nextLine();
+                        person.setEmail(email);
+
+                        System.out.println(person);
+
+                        persons.add(person);
+                    }
                     break;
                 case 4:
-                    for (int i = 0; i < 2; i++) {
+                    System.out.println("Enter how many students do you want\n");
+                    int s = scanner10.nextInt();
+
+                    for (int i = 0; i < s; i++) {
 
                         Student student = new Student();
 
@@ -167,7 +192,9 @@ public class Controller {
 
                         String name1 = scanner2.nextLine();
                         student.setLastName(name1);
+
                         System.out.println(student);
+
                         students.add(student);
                     }
                     break;
@@ -204,9 +231,9 @@ public class Controller {
                     break;
                 case 6:
                     System.out.println("Enter how many homeworks do you want\n");
-                    int many = scanner.nextInt();
+                    int h = scanner.nextInt();
 
-                    for (int i = 0; i < many; i++) {
+                    for (int i = 0; i < h; i++) {
                         Homework homework = new Homework();
                         List<Homework> homeworks = new ArrayList<>();
                         System.out.println("Input Homework id");
@@ -227,9 +254,9 @@ public class Controller {
                     break;
                 case 7:
                     System.out.println("Enter how many Materials do you want\n");
-                    int many1 = scanner1.nextInt();
+                    int m = scanner1.nextInt();
 
-                    for (int i = 0; i < many1; i++) {
+                    for (int i = 0; i < m; i++) {
                         AdditionalMaterials additionalMaterials = new AdditionalMaterials();
                         List<AdditionalMaterials> additionalMaterialsList = new ArrayList<>();
 
@@ -379,9 +406,46 @@ public class Controller {
                     }
                     break;
 
+                case 26:
+                    System.out.println("All elements: " + persons);
+                    Set<Person> duplicates = findDuplicates(persons);
+                    System.out.println("Dublicates: " + duplicates);
+                    break;
+
+                case 27:
+                    Optional<Lecture> first1 = lectures.stream().findFirst();
+                    System.out.println(first1);
+                    break;
+                case 28:
+                    try {
+                        List<String> collector = Files.lines(Paths.get("src/checkLog/Logging.txt"))
+                                .filter(f -> f.startsWith("INFO:"))
+                                .collect(Collectors.toList());
+                        System.out.println(collector);
+
+                        Map<String, Long> sum = collector.stream()
+                                        .collect(Collectors.groupingBy(
+                                                Function.identity(), Collectors.counting()));
+                        sum.forEach((a , v) -> System.out.println(a + ": " + v));
+
+                        System.out.println(sum);
+
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
             }
 
         }
+
+    }
+
+    public static <T> Set<T> findDuplicates(Collection<T> collection) {
+        Set<T> elements = new HashSet<>();
+
+        return collection.stream()
+                .filter(e -> !elements.add(e))
+                .collect(Collectors.toSet());
 
     }
 
