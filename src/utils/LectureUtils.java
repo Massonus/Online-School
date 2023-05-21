@@ -2,6 +2,7 @@ package utils;
 
 import entities.Lecture;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -29,6 +30,12 @@ public class LectureUtils {
                 result.add(t);
         }
         return result;
+    }
+
+    public void formatDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSS");
+        String formatDateTime = Lecture.creationDate.format(formatter);
+        System.out.println(formatDateTime);
     }
 
 
