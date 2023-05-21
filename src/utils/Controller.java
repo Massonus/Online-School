@@ -4,6 +4,9 @@ import checkLog.Logger;
 import entities.*;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -12,6 +15,8 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Controller {
     Scanner scanner = new Scanner(System.in);
@@ -68,6 +73,8 @@ public class Controller {
                 System.out.println("21 to see filterLecture");
                 System.out.println("22 to see dates of Lectures");
                 System.out.println("23 to see Homework deadline");
+                System.out.println("24 to print filtered List of teachers");
+                System.out.println("25 to print file with logs");
 
                 try {
                     ch = scanner.nextInt();
@@ -76,7 +83,7 @@ public class Controller {
                     ch = scanner1.nextInt();
                 }
 
-            } while (ch < 1 && ch > 16);
+            } while (ch < 1 && ch > 25);
 
             switch (ch) {
                 case 1:
@@ -296,19 +303,22 @@ public class Controller {
                     break;
 
                 case 14:
+
+                    Person first = Optional.ofNullable(person).orElseGet(() -> new Person(1, "First", Role.STUDENT));
+
                     Pattern pattern = Pattern.compile("(\\w+)");
-                    Matcher matcher = pattern.matcher(person.getFirstname());
+                    Matcher matcher = pattern.matcher(first.getFirstname());
 
                     while (matcher.find()) {
                         int start = matcher.start();
                         int end = matcher.end();
-                        System.out.println("Found a match - " + person.getFirstname().substring(start, end) + " from index " + start + " to " + (end - 1));
+                        System.out.println("Found a match - " + first.getFirstname().substring(start, end) + " from index " + start + " to " + (end - 1));
                         System.out.println(matcher.group());
-                        System.out.println("Found a match - " + person.getLastname().substring(start, end) + " from index " + start + " to " + (end - 1));
+                        System.out.println("Found a match - " + first.getLastname().substring(start, end) + " from index " + start + " to " + (end - 1));
                         System.out.println(matcher.group());
-                        System.out.println("Found a match - " + person.getPhone().substring(start, end) + " from index " + start + " to " + (end - 1));
+                        System.out.println("Found a match - " + first.getPhone().substring(start, end) + " from index " + start + " to " + (end - 1));
                         System.out.println(matcher.group());
-                        System.out.println("Found a match - " + person.getPhone().substring(start, end) + " from index " + start + " to " + (end - 1));
+                        System.out.println("Found a match - " + first.getPhone().substring(start, end) + " from index " + start + " to " + (end - 1));
                         System.out.println(matcher.group());
                     }
                     System.out.println(matcher.groupCount());
@@ -351,6 +361,22 @@ public class Controller {
                 case 23:
                     ZonedDateTime zonedDateTime1 = ZonedDateTime.of(Homework.deadline, ZoneId.of("Europe/Kiev"));
                     System.out.println(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(Locale.ENGLISH).format(zonedDateTime1));
+                    break;
+
+                case 24:
+                    teachers.stream().filter(teach -> teach.getLastName().endsWith("N")).forEach(teach -> System.out.println(teach));
+                    break;
+
+                case 25:
+                    try {
+                        List<String> collect = Files.lines(Paths.get("src/checkLog/Logging.txt"))
+                                .filter(f -> f.startsWith("INFO:"))
+                                .collect(Collectors.toList());
+                        System.out.println(collect);
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     break;
 
             }
