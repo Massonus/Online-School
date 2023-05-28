@@ -4,6 +4,10 @@ import checkLog.Logger;
 import entities.*;
 
 import java.io.*;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
@@ -30,6 +34,7 @@ public class Controller {
     List<Lecture> lectures = new ArrayList<>();
     Map<String, List<Homework>> homeworkMap = new HashMap<>();
     Map<String, List<AdditionalMaterials>> additionalMap = new HashMap<>();
+    LectureUtils lectureUtils = new LectureUtils();
 
     public void Console() {
 
@@ -61,7 +66,8 @@ public class Controller {
                 System.out.println("20 to do Deserialization");
                 System.out.println("19 to do Serialization");
                 System.out.println("21 to see filterLecture");
-
+                System.out.println("22 to see dates of Lectures");
+                System.out.println("23 to see Homework deadline");
 
                 try {
                     ch = scanner.nextInt();
@@ -333,6 +339,19 @@ public class Controller {
 
                 case 21:
                     filterLectures();
+                    break;
+                case 22:
+                    System.out.println("Before format: \n" + Lecture.creationDate);
+                    System.out.println("After format: " );
+                    lectureUtils.formatDate();
+                    ZonedDateTime zonedDateTime = ZonedDateTime.of(Lecture.lectureDate, ZoneId.of("Europe/Kiev"));
+                    System.out.println(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(Locale.ENGLISH).format(zonedDateTime));
+                    break;
+
+                case 23:
+                    ZonedDateTime zonedDateTime1 = ZonedDateTime.of(Homework.deadline, ZoneId.of("Europe/Kiev"));
+                    System.out.println(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(Locale.ENGLISH).format(zonedDateTime1));
+                    break;
 
             }
 
@@ -341,7 +360,7 @@ public class Controller {
     }
 
     public void filterLectures() {
-        List<Lecture> result = LectureUtils.filter(lectures, a -> a.getDate().startsWith("18.05.2023") || a.getDate().endsWith("21.05.2023"));
+        List<Lecture> result = LectureUtils.filter(lectures, a -> a.getDate().startsWith("18.05.2023") && a.getDate().endsWith("21.05.2023"));
         System.out.println(result);
 
         Predicate<Lecture> func1 = a -> a.getDate().equals("19.05.2023");

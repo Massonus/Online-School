@@ -1,9 +1,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Lecture implements Serializable {
 
+    public static LocalDateTime creationDate = LocalDateTime.now();
+    public static LocalDateTime lectureDate = LocalDateTime.now();
     private static Homework[] homeworks;
     public static int count;
 
@@ -14,7 +20,6 @@ public class Lecture implements Serializable {
     private String description;
 
     private String date;
-
 
     public int getPersonId() {
         return personId;

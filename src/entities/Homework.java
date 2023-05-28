@@ -1,13 +1,14 @@
 package entities;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Homework implements Serializable {
+
+    public static LocalDateTime deadline = LocalDateTime.now().plusHours(19);
     private Integer lectureId;
-
     private String task;
-
     public Homework() {
     }
 
