@@ -14,14 +14,17 @@ public class AdditionalMaterials implements Comparator<AdditionalMaterials>, Ser
 
     ResourceType resourceType;
 
+    private Lecture lecture;
+
     public AdditionalMaterials() {
     }
 
-    public AdditionalMaterials(Integer id, String name, Integer lectureId, ResourceType resourceType) {
+    public AdditionalMaterials(Integer id, String name, Integer lectureId, ResourceType resourceType, Lecture lecture) {
         this.id = id;
         this.name = name;
         this.lectureId = lectureId;
         this.resourceType = resourceType;
+        this.lecture = lecture;
     }
 
     public Integer getId() {
@@ -56,13 +59,12 @@ public class AdditionalMaterials implements Comparator<AdditionalMaterials>, Ser
         this.resourceType = resourceType;
     }
 
-    @Override
-    public String toString() {
-        return "AdditionalMaterials{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", lectureId=" + lectureId +
-                '}';
+    public Lecture getLecture() {
+        return lecture;
+    }
+
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
     }
 
     @Override

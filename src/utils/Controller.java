@@ -40,6 +40,8 @@ public class Controller {
     List<Student> students = new ArrayList<>();
     List<Teacher> teachers = new ArrayList<>();
     List<Lecture> lectures = new ArrayList<>();
+
+    List<AdditionalMaterials> additionalMaterialsList = new ArrayList<>();
     Map<String, List<Homework>> homeworkMap = new HashMap<>();
     Map<String, List<AdditionalMaterials>> additionalMap = new HashMap<>();
     LectureUtils lectureUtils = new LectureUtils();
@@ -82,6 +84,10 @@ public class Controller {
                 System.out.println("26 to print dublicates");
                 System.out.println("27 to print first lecture");
                 System.out.println("28 to print how many INFOes in Logging.txt");
+                System.out.println("29 to print groped lectures");
+                System.out.println("30 to print grouped additional materials");
+                System.out.println("31 to print sorted Map");
+                System.out.println("32 to write emails to the file");
 
                 try {
                     ch = scanner12.nextInt();
@@ -222,6 +228,16 @@ public class Controller {
                         String name5 = scanner2.nextLine();
                         lecture.setDate(name5);
 
+                        System.out.println("\n Input name of a teacher");
+
+                        String name6 = scanner3.nextLine();
+
+                        System.out.println("\n Input Lastname of a teacher");
+
+                        String name7 = scanner4.nextLine();
+
+                        lecture.setTeacher(new Teacher(i, name6, name7));
+
                         lectures.add(lecture);
 
                         System.out.println("\nFull lecture: " + lecture);
@@ -258,7 +274,7 @@ public class Controller {
 
                     for (int i = 0; i < m; i++) {
                         AdditionalMaterials additionalMaterials = new AdditionalMaterials();
-                        List<AdditionalMaterials> additionalMaterialsList = new ArrayList<>();
+                        /*List<AdditionalMaterials> additionalMaterialsList = new ArrayList<>();*/
 
                         System.out.println("Input Additional id");
 
@@ -270,10 +286,15 @@ public class Controller {
                         String name = scanner9.nextLine();
                         additionalMaterials.setName(name);
 
+                        String name1 = scanner10.nextLine();
+
+                        additionalMaterials.setLecture(new Lecture(i, name1, "about something", "28.05.2023", new Teacher(i, "First Teacher" + i, "Last teacher" + i)));
+
                         additionalMaterialsList.add(additionalMaterials);
 
                         String k = String.valueOf(lectureId);
                         additionalMap.put(k, additionalMaterialsList);
+
                     }
                     break;
                 case 8:
@@ -434,8 +455,83 @@ public class Controller {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                    break;
+
+                case 29:
+                    sortLecturesByTeacher();
+
+                    break;
+
+                case 30:
+                    sortAddMatByLecture();
+
+                    break;
+
+                case 31:
+                    printMap();
+
+                    break;
+
+                case 32:
+                    writeFile();
+
+                    break;
+
+
             }
 
+
+        }
+
+    }
+
+    public void sortLecturesByTeacher() {
+        Map<Teacher, List<Lecture>> collect = lectures.stream().collect(Collectors.groupingBy(
+                Lecture::getTeacher));
+
+        collect.entrySet().forEach(System.out::println);
+
+    }
+
+    public void sortAddMatByLecture() {
+        Map<Lecture, List<AdditionalMaterials>> collect = additionalMaterialsList.stream().collect(Collectors.groupingBy(
+                AdditionalMaterials::getLecture));
+
+        collect.entrySet().forEach(System.out::println);
+
+
+    }
+
+    public void printMap() {
+
+        Map<String, String> collect = persons.stream().collect(Collectors.toMap(
+                Person::getEmail,
+                Person::getFirstname
+        ));
+
+        System.out.println(collect);
+
+    }
+
+    public void writeFile() {
+        List<Person> collect = persons.stream()
+                .sorted((a, b) -> b.getEmail().compareTo(String.valueOf(a)))
+                .toList();
+        try
+
+        {
+            OutputStream f = new FileOutputStream("src/utils/Emails.txt", true);
+            OutputStreamWriter writer = new OutputStreamWriter(f);
+            BufferedWriter out = new BufferedWriter(writer);
+            for(int i = 0; i < collect.size(); i++)
+            {
+                out.write(collect.get(i).getEmail());
+                out.flush();
+            }
+        }
+        catch (IOException ex)
+        {
+            System.err.println(ex);
         }
 
     }
@@ -494,9 +590,9 @@ public class Controller {
 
     static void serial(final String path) {
         final File file = new File(path);
-        final AdditionalMaterials additionalMaterials = new AdditionalMaterials(4, "Math", 56, ResourceType.URL);
+        final AdditionalMaterials additionalMaterials = new AdditionalMaterials(4, "Math", 56, ResourceType.URL, new Lecture());
         final Homework homework = new Homework(34, "Task 24");
-        final Lecture lecture = new Lecture(4, "Second", "About plus and minus", "12.z05.2023");
+        final Lecture lecture = new Lecture(4, "Second", "About plus and minus", "12.z05.2023", new Teacher());
         final Student student = new Student(23, "Ivan", "Prohorov");
         final Teacher teacher = new Teacher(45, "Maria", "Ostapenko");
 
