@@ -3,15 +3,16 @@ package utils;
 import comparators.CompareById;
 import comparators.CompareByLectureId;
 import entities.AdditionalMaterials;
+import entities.Lecture;
 import entities.ResourceType;
 
 import java.util.*;
 
 public class AddController {
 
-    AdditionalMaterials additionalMaterials = new AdditionalMaterials(5, "Math", 13, ResourceType.BOOK);
-    AdditionalMaterials additionalMaterials1 = new AdditionalMaterials(2, "UK", 20, ResourceType.URL);
-    AdditionalMaterials additionalMaterials2 = new AdditionalMaterials(10, "Geo", 15, ResourceType.VIDEO);
+    AdditionalMaterials additionalMaterials = new AdditionalMaterials(5, "Math", 13, ResourceType.BOOK, new Lecture());
+    AdditionalMaterials additionalMaterials1 = new AdditionalMaterials(2, "UK", 20, ResourceType.URL, new Lecture());
+    AdditionalMaterials additionalMaterials2 = new AdditionalMaterials(10, "Geo", 15, ResourceType.VIDEO, new Lecture());
     Scanner scanner = new Scanner(System.in);
     List<AdditionalMaterials> additionals = new ArrayList<>();
 
