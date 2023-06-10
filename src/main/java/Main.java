@@ -1,5 +1,3 @@
-package utils;
-
 import utils.AddController;
 import utils.Controller;
 import utils.CourseUtils;
