@@ -1,10 +1,7 @@
 package entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Objects;
 
 public class Lecture implements Serializable {
