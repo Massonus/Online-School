@@ -398,7 +398,7 @@ public class Controller {
                     break;
                 case 22:
                     System.out.println("Before format: \n" + Lecture.creationDate);
-                    System.out.println("After format: " );
+                    System.out.println("After format: ");
                     lectureUtils.formatDate();
                     ZonedDateTime zonedDateTime = ZonedDateTime.of(Lecture.lectureDate, ZoneId.of("Europe/Kiev"));
                     System.out.println(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(Locale.ENGLISH).format(zonedDateTime));
@@ -443,9 +443,9 @@ public class Controller {
                         System.out.println(collector);
 
                         Map<String, Long> sum = collector.stream()
-                                        .collect(Collectors.groupingBy(
-                                                Function.identity(), Collectors.counting()));
-                        sum.forEach((a , v) -> System.out.println(a + ": " + v));
+                                .collect(Collectors.groupingBy(
+                                        Function.identity(), Collectors.counting()));
+                        sum.forEach((a, v) -> System.out.println(a + ": " + v));
 
                         System.out.println(sum);
 
@@ -515,20 +515,15 @@ public class Controller {
         List<Person> collect = persons.stream()
                 .sorted((a, b) -> b.getEmail().compareTo(String.valueOf(a)))
                 .toList();
-        try
-
-        {
+        try {
             OutputStream f = new FileOutputStream("src/utils/Emails.txt", true);
             OutputStreamWriter writer = new OutputStreamWriter(f);
             BufferedWriter out = new BufferedWriter(writer);
-            for(int i = 0; i < collect.size(); i++)
-            {
+            for (int i = 0; i < collect.size(); i++) {
                 out.write(collect.get(i).getEmail());
                 out.flush();
             }
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             System.err.println(ex);
         }
 
