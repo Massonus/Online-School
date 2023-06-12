@@ -456,12 +456,12 @@ public class Controller {
                     break;
 
                 case 29:
-                    sortLecturesByTeacher();
+                    sortLecturesByTeacher(lectures).forEach(System.out::println);
 
                     break;
 
                 case 30:
-                    sortAddMatByLecture();
+                    sortAddMatByLecture(additionalMaterialsList).forEach(System.out::println);
 
                     break;
 
@@ -483,20 +483,23 @@ public class Controller {
 
     }
 
-    public void sortLecturesByTeacher() {
+    public Set<Map.Entry<Teacher, List<Lecture>>> sortLecturesByTeacher(List<Lecture> lectures) {
         Map<Teacher, List<Lecture>> collect = lectures.stream().collect(Collectors.groupingBy(
                 Lecture::getTeacher));
 
-        collect.entrySet().forEach(System.out::println);
+        Set<Map.Entry<Teacher, List<Lecture>>> entries1 = collect.entrySet();
+
+        return entries1;
 
     }
 
-    public void sortAddMatByLecture() {
+    public Set<Map.Entry<Lecture, List<AdditionalMaterials>>> sortAddMatByLecture(List<AdditionalMaterials> additionalMaterialsList) {
         Map<Lecture, List<AdditionalMaterials>> collect = additionalMaterialsList.stream().collect(Collectors.groupingBy(
                 AdditionalMaterials::getLecture));
 
-        collect.entrySet().forEach(System.out::println);
+        Set<Map.Entry<Lecture, List<AdditionalMaterials>>> entries = collect.entrySet();
 
+        return entries;
 
     }
 
