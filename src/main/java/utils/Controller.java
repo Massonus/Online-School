@@ -1,5 +1,6 @@
 package utils;
 
+import checkLog.Logging;
 import checkLog.Logger;
 import entities.*;
 
@@ -86,6 +87,7 @@ public class Controller {
                 System.out.println("30 to print grouped additional materials");
                 System.out.println("31 to print sorted Map");
                 System.out.println("32 to write emails to the file");
+                System.out.println("33 to see logs");
 
                 try {
                     ch = scanner12.nextInt();
@@ -472,6 +474,11 @@ public class Controller {
 
                 case 32:
                     writeFile();
+
+                    break;
+
+                case 33:
+                    Logging.Logging();
 
                     break;
 
