@@ -18,7 +18,7 @@ public class Logger {
     static java.util.logging.Logger LOGGER;
 
     static {
-        try (FileInputStream ins = new FileInputStream("src/CheckLog/log.config")) {
+        try (FileInputStream ins = new FileInputStream("src/main/java/checkLog/log.config")) {
             LogManager.getLogManager().readConfiguration(ins);
             LOGGER = java.util.logging.Logger.getLogger(Logger.class.getName());
         } catch (Exception ignore) {
@@ -30,9 +30,9 @@ public class Logger {
 
         try {
             LOGGER.log(Level.INFO, "Create List");
-            List<Integer> ints = new ArrayList<Integer>();
+            List<String> strings = new ArrayList<>();
             LOGGER.log(Level.INFO, "Integer type");
-            List empty = ints;
+            List empty = strings;
             LOGGER.log(Level.INFO, "Assign List");
             List<String> string = empty;
             LOGGER.log(Level.WARNING, "Line1 added");
@@ -43,15 +43,15 @@ public class Logger {
             string.add("New line3");
 
             LOGGER.log(Level.INFO, "Print all elements");
-            for (Object anInt : ints) {
+            for (Object anInt : strings) {
                 System.out.println(anInt);
             }
 
-            LOGGER.log(Level.INFO, "Size: " + ints.size());
+            LOGGER.log(Level.INFO, "Size: " + strings.size());
             LOGGER.log(Level.INFO, "First element");
-            Integer integer = ints.get(0);
+            String str = strings.get(0);
             LOGGER.log(Level.INFO, "Print element");
-            System.out.println(integer);
+            System.out.println(str);
 
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "Something is wrong", e);

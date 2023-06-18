@@ -398,7 +398,7 @@ public class Controller {
                     break;
                 case 22:
                     System.out.println("Before format: \n" + Lecture.creationDate);
-                    System.out.println("After format: " );
+                    System.out.println("After format: ");
                     lectureUtils.formatDate();
                     ZonedDateTime zonedDateTime = ZonedDateTime.of(Lecture.lectureDate, ZoneId.of("Europe/Kiev"));
                     System.out.println(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(Locale.ENGLISH).format(zonedDateTime));
@@ -443,9 +443,9 @@ public class Controller {
                         System.out.println(collector);
 
                         Map<String, Long> sum = collector.stream()
-                                        .collect(Collectors.groupingBy(
-                                                Function.identity(), Collectors.counting()));
-                        sum.forEach((a , v) -> System.out.println(a + ": " + v));
+                                .collect(Collectors.groupingBy(
+                                        Function.identity(), Collectors.counting()));
+                        sum.forEach((a, v) -> System.out.println(a + ": " + v));
 
                         System.out.println(sum);
 
@@ -456,12 +456,12 @@ public class Controller {
                     break;
 
                 case 29:
-                    sortLecturesByTeacher();
+                    sortLecturesByTeacher(lectures).forEach(System.out::println);
 
                     break;
 
                 case 30:
-                    sortAddMatByLecture();
+                    sortAddMatByLecture(additionalMaterialsList).forEach(System.out::println);
 
                     break;
 
@@ -483,20 +483,23 @@ public class Controller {
 
     }
 
-    public void sortLecturesByTeacher() {
+    public Set<Map.Entry<Teacher, List<Lecture>>> sortLecturesByTeacher(List<Lecture> lectures) {
         Map<Teacher, List<Lecture>> collect = lectures.stream().collect(Collectors.groupingBy(
                 Lecture::getTeacher));
 
-        collect.entrySet().forEach(System.out::println);
+        Set<Map.Entry<Teacher, List<Lecture>>> entries1 = collect.entrySet();
+
+        return entries1;
 
     }
 
-    public void sortAddMatByLecture() {
+    public Set<Map.Entry<Lecture, List<AdditionalMaterials>>> sortAddMatByLecture(List<AdditionalMaterials> additionalMaterialsList) {
         Map<Lecture, List<AdditionalMaterials>> collect = additionalMaterialsList.stream().collect(Collectors.groupingBy(
                 AdditionalMaterials::getLecture));
 
-        collect.entrySet().forEach(System.out::println);
+        Set<Map.Entry<Lecture, List<AdditionalMaterials>>> entries = collect.entrySet();
 
+        return entries;
 
     }
 
@@ -515,20 +518,15 @@ public class Controller {
         List<Person> collect = persons.stream()
                 .sorted((a, b) -> b.getEmail().compareTo(String.valueOf(a)))
                 .toList();
-        try
-
-        {
+        try {
             OutputStream f = new FileOutputStream("src/utils/Emails.txt", true);
             OutputStreamWriter writer = new OutputStreamWriter(f);
             BufferedWriter out = new BufferedWriter(writer);
-            for(int i = 0; i < collect.size(); i++)
-            {
+            for (int i = 0; i < collect.size(); i++) {
                 out.write(collect.get(i).getEmail());
                 out.flush();
             }
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             System.err.println(ex);
         }
 
