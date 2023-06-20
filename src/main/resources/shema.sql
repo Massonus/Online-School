@@ -100,3 +100,39 @@ SELECT first_name, last_name FROM students
 WHERE courses > 3
 ORDER BY last_name
 
+-------------------------------------------
+
+SELECT
+    full_name,
+    teachers.teacher_code
+FROM
+    teachers
+        INNER JOIN lectures
+                   ON teachers.teacher_code = lectures.teacher_code
+ORDER BY time
+
+SELECT full_name, lectures_count FROM teachers
+
+SELECT
+    lectures.time,
+    l_name
+FROM
+    lectures
+        INNER JOIN teachers
+                   ON teachers.teacher_code = lectures.teacher_code
+ORDER BY time
+
+SELECT name, COUNT(lecture), COUNT(teacher), COUNT(student), COUNT(add_m), COUNT(homework)
+
+SELECT time
+FROM lectures
+UNION
+SELECT date
+FROM courses
+
+SELECT max(l_name) FROM lectures
+                            INNER JOIN teachers
+                                       ON teachers.teacher_code = lectures.teacher_code
+
+
+
