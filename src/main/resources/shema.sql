@@ -76,3 +76,27 @@ WHERE id = 2;
 
 SELECT * FROM lectures WHERE id > 1
 
+
+-------------------------------------------
+
+SELECT * FROM students
+ORDER BY last_name
+
+SELECT name FROM lectures AS adm
+ORDER BY date DESC LIMIT 34
+
+SELECT min(date) AS c
+FROM lectures
+
+SELECT COUNT(video),
+       COUNT(url),
+       COUNT(BOOK)
+FROM add_materials
+
+SELECT last_name FROM teachers
+WHERE last_name LIKE 'N%'
+
+SELECT first_name, last_name FROM students
+WHERE courses > 3
+ORDER BY last_name
+
