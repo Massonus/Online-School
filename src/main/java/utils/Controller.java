@@ -90,6 +90,7 @@ public class Controller {
                 System.out.println("32 to write emails to the file");
                 System.out.println("33 to see logs");
                 System.out.println("34 to get add materials from data base");
+                System.out.println("35 to add new lines to  materials");
 
                 try {
                     ch = scanner12.nextInt();
@@ -485,9 +486,13 @@ public class Controller {
                     break;
 
                 case 34:
-                    final List<AdditionalMaterials> materials = BaseRepo.gatAllMaterials();
+                    final List<AdditionalMaterials> materials = BaseRepo.CallableStatement();
                     materials.forEach(System.out::println);
 
+                    break;
+
+                case 35:
+                    BaseRepo.insertColumns();
 
                     break;
 
