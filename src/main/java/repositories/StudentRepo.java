@@ -2,7 +2,30 @@ package repositories;
 
 import entities.Student;
 
-public class StudentRepo implements AboutRepo {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+public class StudentRepo extends AbstractRepo implements AboutRepo {
+
+    public static Student getStudentByName(String name) {
+        Student student = new Student();
+        try {
+            String sql = "SELECT * FROM students WHERE name = ?";
+            try (Connection conn = createCon();
+                 PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+                preparedStatement.setString(1, name);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                student.setId(resultSet.getInt("s_id"));
+                student.setFirstName(resultSet.getString("john"));
+                student.setLastName(resultSet.getString("invo"));
+                return student;
+            }
+        } catch (Exception ex) {
+            System.out.println("Connection failed..." + ex);
+        }
+        return null;
+    }
 
     private static Student[] students;
 
