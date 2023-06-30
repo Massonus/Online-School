@@ -3,6 +3,7 @@ package utils;
 import checkLog.Logging;
 import checkLog.Logger;
 import entities.*;
+import repositories.BaseRepo;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -88,6 +89,8 @@ public class Controller {
                 System.out.println("31 to print sorted Map");
                 System.out.println("32 to write emails to the file");
                 System.out.println("33 to see logs");
+                System.out.println("34 to get add materials from data base");
+                System.out.println("35 to add new lines to  materials");
 
                 try {
                     ch = scanner12.nextInt();
@@ -482,6 +485,17 @@ public class Controller {
 
                     break;
 
+                case 34:
+                    final List<AdditionalMaterials> materials = BaseRepo.CallableStatement();
+                    materials.forEach(System.out::println);
+
+                    break;
+
+                case 35:
+                    BaseRepo.insertColumns();
+
+                    break;
+
 
             }
 
@@ -593,7 +607,7 @@ public class Controller {
 
     static void serial(final String path) {
         final File file = new File(path);
-        final AdditionalMaterials additionalMaterials = new AdditionalMaterials(4, "Math", 56, ResourceType.URL, new Lecture());
+        final AdditionalMaterials additionalMaterials = new AdditionalMaterials();
         final Homework homework = new Homework(34, "Task 24");
         final Lecture lecture = new Lecture(4, "Second", "About plus and minus", "12.z05.2023", new Teacher());
         final Student student = new Student(23, "Ivan", "Prohorov");

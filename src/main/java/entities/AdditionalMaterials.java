@@ -1,9 +1,11 @@
 package entities;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
-
+@Data
 public class AdditionalMaterials implements Comparator<AdditionalMaterials>, Serializable{
 
     private Integer id;
@@ -11,6 +13,12 @@ public class AdditionalMaterials implements Comparator<AdditionalMaterials>, Ser
     private String name;
 
     private Integer lectureId;
+
+    private String url;
+
+    private String video;
+
+    private String book;
 
     ResourceType resourceType;
 
@@ -27,44 +35,18 @@ public class AdditionalMaterials implements Comparator<AdditionalMaterials>, Ser
         this.lecture = lecture;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getLectureId() {
-        return lectureId;
-    }
-
-    public void setLectureId(Integer lectureId) {
-        this.lectureId = lectureId;
-    }
-
-    public ResourceType getResourceType() {
-        return resourceType;
-    }
-
-    public void setResourceType(ResourceType resourceType) {
-        this.resourceType = resourceType;
-    }
-
-    public Lecture getLecture() {
-        return lecture;
-    }
-
-    public void setLecture(Lecture lecture) {
-        this.lecture = lecture;
+    @Override
+    public String toString() {
+        return "AdditionalMaterials{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lectureId=" + lectureId +
+                ", url='" + url + '\'' +
+                ", video='" + video + '\'' +
+                ", book='" + book + '\'' +
+                ", resourceType=" + resourceType +
+                ", lecture=" + lecture +
+                '}';
     }
 
     @Override
