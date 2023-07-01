@@ -1,0 +1,25 @@
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+INFO: Create List
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+INFO: Integer type
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+INFO: Assign List
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+WARNING: Line1 added
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+WARNING: Line2 added
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+WARNING: Line3 added
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+INFO: Print all elements
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+INFO: Size: 3
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+INFO: First element
+мая 21, 2023 2:52:13 PM checkLog.Logger Logging
+WARNING: Something is wrong
+java.lang.ClassCastException: class java.lang.String cannot be cast to class java.lang.Integer (java.lang.String and java.lang.Integer are in module java.base of loader 'bootstrap')
+	at checkLog.Logger.Logging(Logger.java:52)
+	at utils.Controller.Console(Controller.java:325)
+	at utils.Main.main(utils.Main.java:10)
+
