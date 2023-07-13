@@ -1,10 +1,12 @@
 package entities;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
+@Component
 @Data
 public class AdditionalMaterials implements Comparator<AdditionalMaterials>, Serializable{
 

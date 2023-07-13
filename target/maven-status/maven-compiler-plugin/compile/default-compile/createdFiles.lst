@@ -4,6 +4,7 @@ utils\MyThread$1.class
 utils\MyThread$4.class
 entities\Lecture.class
 repositories\HomeworkRepo.class
+utils\GetStudent.class
 entities\Course.class
 utils\Generalization.class
 checkLog\Logging.class
