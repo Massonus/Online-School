@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class Generalization<E>
 {
+    double f;
     E[] lecturesArray;
 
     public int size() throws IOException {
