@@ -2,9 +2,7 @@ package utils;
 
 import java.io.IOException;
 
-public class Generalization<E>
-{
-    double f;
+public class Generalization<E> {
     E[] lecturesArray;
 
     public int size() throws IOException {
