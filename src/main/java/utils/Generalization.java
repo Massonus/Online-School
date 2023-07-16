@@ -2,7 +2,8 @@ package utils;
 
 import java.io.IOException;
 
-public class Generalization<E> {
+public class Generalization<E>
+{
     E[] lecturesArray;
 
     public int size() throws IOException {
