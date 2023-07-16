@@ -1,6 +1,8 @@
 package entities;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import utils.TeacherUtils;
 
 import java.io.Serializable;
 import java.util.Comparator;
@@ -14,10 +16,16 @@ public class Teacher implements Comparator<Teacher>, Serializable {
 
     private String lastName;
 
+    private TeacherUtils teacherUtils;
+
     public Teacher(Integer id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+    @Autowired
+    public void setTeacherUtils(TeacherUtils teacherUtils) {
+        this.teacherUtils = teacherUtils;
     }
 
     public int getId() {
