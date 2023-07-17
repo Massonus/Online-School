@@ -1,10 +1,13 @@
 package entities;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Course implements Comparator<Course> {
 
+@Component
+public class Course implements Comparator<Course> {
     private Integer id;
 
     private String name;

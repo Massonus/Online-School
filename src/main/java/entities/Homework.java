@@ -1,9 +1,11 @@
 package entities;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
+@Component
 public class Homework implements Serializable {
 
     public static LocalDateTime deadline = LocalDateTime.now().plusHours(19);

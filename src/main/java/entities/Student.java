@@ -1,9 +1,11 @@
 package entities;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
-
+@Component
 public class Student implements Comparator<Student>, Serializable {
     private Integer id;
 

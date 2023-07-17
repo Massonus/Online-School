@@ -3,6 +3,7 @@ package utils;
 import checkLog.Logging;
 import checkLog.Logger;
 import entities.*;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import repositories.BaseRepo;
 
 import java.io.*;
@@ -91,6 +92,7 @@ public class Controller {
                 System.out.println("33 to see logs");
                 System.out.println("34 to get add materials from data base");
                 System.out.println("35 to add new lines to  materials");
+                System.out.println("36 Use Spring");
 
                 try {
                     ch = scanner12.nextInt();
@@ -493,6 +495,17 @@ public class Controller {
 
                 case 35:
                     BaseRepo.insertColumns();
+
+                    break;
+
+                case 36:
+                    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("AppProject.xml");
+
+                    Student student = context.getBean("StudentBean", Student.class);
+
+                    System.out.println(student.getFirstName());
+
+                    context.close();
 
                     break;
 
