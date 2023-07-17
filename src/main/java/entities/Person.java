@@ -19,6 +19,7 @@ public class Person {
 
     private String email;
 
+
     public Person(int id, String courseId, Role role) {
         this.id = id;
         this.courseId = courseId;

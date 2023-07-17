@@ -1,6 +1,8 @@
 package entities;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import utils.CourseUtils;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -12,6 +14,8 @@ public class Course implements Comparator<Course> {
 
     private String name;
 
+    private CourseUtils courseUtils;
+
     public Course() {
     }
 
@@ -21,6 +25,10 @@ public class Course implements Comparator<Course> {
 
     }
 
+    @Autowired
+    public void setCourseUtils(CourseUtils courseUtils) {
+        this.courseUtils = courseUtils;
+    }
 
     public String getName() {
         return name;

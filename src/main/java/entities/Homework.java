@@ -1,6 +1,8 @@
 package entities;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import utils.HomeworkUtils;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,12 +13,18 @@ public class Homework implements Serializable {
     public static LocalDateTime deadline = LocalDateTime.now().plusHours(19);
     private Integer lectureId;
     private String task;
+
+    private HomeworkUtils homeworkUtils;
     public Homework() {
     }
 
     public Homework(Integer lectureId, String task) {
         this.lectureId = lectureId;
         this.task = task;
+    }
+    @Autowired
+    public void setHomeworkUtils(HomeworkUtils homeworkUtils) {
+        this.homeworkUtils = homeworkUtils;
     }
 
     public Integer getLectureId() {

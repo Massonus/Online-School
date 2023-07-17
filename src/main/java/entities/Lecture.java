@@ -1,6 +1,8 @@
 package entities;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import utils.LectureUtils;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -22,6 +24,8 @@ public class Lecture implements Serializable {
 
     private Teacher teacher;
 
+    private LectureUtils lectureUtils;
+
     public Lecture() {
     }
 
@@ -32,6 +36,10 @@ public class Lecture implements Serializable {
         this.date = date;
         this.teacher = teacher;
         count++;
+    }
+    @Autowired
+    public void setLectureUtils(LectureUtils lectureUtils) {
+        this.lectureUtils = lectureUtils;
     }
 
     public Integer getPersonId() {
