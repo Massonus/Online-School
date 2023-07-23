@@ -1,15 +1,17 @@
 package entities;
 
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
-@Component
+@Entity
+@Table (name = "aMaterials")
 @Data
 public class AdditionalMaterials implements Comparator<AdditionalMaterials>, Serializable{
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;

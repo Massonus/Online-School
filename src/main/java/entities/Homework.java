@@ -1,16 +1,20 @@
 package entities;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import utils.HomeworkUtils;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-@Component
+@Entity
 public class Homework implements Serializable {
 
     public static LocalDateTime deadline = LocalDateTime.now().plusHours(19);
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer lectureId;
     private String task;
 
@@ -22,7 +26,7 @@ public class Homework implements Serializable {
         this.lectureId = lectureId;
         this.task = task;
     }
-    @Autowired
+
     public void setHomeworkUtils(HomeworkUtils homeworkUtils) {
         this.homeworkUtils = homeworkUtils;
     }

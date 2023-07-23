@@ -1,19 +1,23 @@
 package entities;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import utils.LectureUtils;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
-@Component
+@Entity
 public class Lecture implements Serializable {
 
     public static LocalDateTime creationDate = LocalDateTime.now();
     public static LocalDateTime lectureDate = LocalDateTime.now();
     public static int count;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer personId;
 
     private String name;
