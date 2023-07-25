@@ -1,13 +1,13 @@
 package entities;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import utils.CourseUtils;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -20,6 +20,12 @@ public class Course implements Comparator<Course> {
     private String name;
 
     private CourseUtils courseUtils;
+
+    @OneToMany(mappedBy = "course",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @ToString.Exclude
+    private List<Lecture> lectures = new ArrayList<>();
 
     public Course() {
     }

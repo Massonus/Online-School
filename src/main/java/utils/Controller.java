@@ -46,6 +46,7 @@ public class Controller {
     Map<String, List<Homework>> homeworkMap = new HashMap<>();
     Map<String, List<AdditionalMaterials>> additionalMap = new HashMap<>();
     LectureUtils lectureUtils = new LectureUtils();
+    TeacherUtils teacherUtils = new TeacherUtils();
 
     public void Console() {
 
@@ -206,7 +207,7 @@ public class Controller {
 
                         System.out.println(student);
 
-                        students.add(student);
+                        teacherUtils.saveStudent(student);
                     }
                     break;
                 case 5:

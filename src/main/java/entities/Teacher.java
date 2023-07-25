@@ -1,14 +1,14 @@
 package entities;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import utils.TeacherUtils;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 @Entity
 public class Teacher implements Comparator<Teacher>, Serializable {
@@ -21,6 +21,12 @@ public class Teacher implements Comparator<Teacher>, Serializable {
     private String lastName;
 
     private TeacherUtils teacherUtils;
+
+    @OneToMany(mappedBy = "teacher",
+                    cascade = CascadeType.ALL,
+                    orphanRemoval = true)
+    @ToString.Exclude
+    private List<Student> students = new ArrayList<>();
 
     public Teacher(Integer id, String firstName, String lastName) {
         this.id = id;
