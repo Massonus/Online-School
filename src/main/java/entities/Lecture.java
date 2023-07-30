@@ -1,12 +1,10 @@
 package entities;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import utils.LectureUtils;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -29,6 +27,11 @@ public class Lecture implements Serializable {
     private Teacher teacher;
 
     private LectureUtils lectureUtils;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lecture_id")
+    @ToString.Exclude
+    private Course course;
 
     public Lecture() {
     }

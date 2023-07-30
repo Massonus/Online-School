@@ -1,9 +1,8 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.ToString;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
@@ -16,6 +15,12 @@ public class Student implements Comparator<Student>, Serializable {
     private String firstName;
 
     private String lastName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
+    @ToString.Exclude
+    private Teacher teacher;
+
 
     public Student() {
     }

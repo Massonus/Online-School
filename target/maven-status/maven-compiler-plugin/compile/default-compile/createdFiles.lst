@@ -23,6 +23,7 @@ utils\HomeworkUtils.class
 checkLog\Logger.class
 comparators\CompareByLectureId.class
 utils\MyThread$8.class
+entities\Config.class
 checkLog\LogService.class
 utils\AdditionalUtils.class
 utils\AddController.class
