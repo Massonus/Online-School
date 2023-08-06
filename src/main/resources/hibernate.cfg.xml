@@ -29,13 +29,13 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="entities.AdditionalMaterials"/>
-        <mapping class="entities.Course"/>
-        <mapping class="entities.Homework"/>
-        <mapping class="entities.Lecture"/>
-        <mapping class="entities.Person"/>
-        <mapping class="entities.Student"/>
-        <mapping class="entities.Teacher"/>
+        <mapping class="massonus.entity.AdditionalMaterials"/>
+        <mapping class="massonus.entity.Course"/>
+        <mapping class="massonus.entity.Homework"/>
+        <mapping class="massonus.entity.Lecture"/>
+        <mapping class="massonus.entity.Person"/>
+        <mapping class="massonus.entity.Student"/>
+        <mapping class="massonus.entity.Teacher"/>
 
 
     </session-factory>
