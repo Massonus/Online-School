@@ -1,7 +1,7 @@
 package massonus.service;
 
-import massonus.entity.Course;
 import massonus.repositories.CourseRepo;
+import massonus.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

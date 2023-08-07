@@ -8,7 +8,6 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "lectures")
 @Getter
 @Setter
 @ToString
@@ -17,7 +16,6 @@ public class Lecture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     private String name;

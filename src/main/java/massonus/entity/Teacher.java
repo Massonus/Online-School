@@ -5,11 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 @Entity
-@Table(name = "teachers")
 @Getter
 @Setter
 @ToString
@@ -25,12 +25,6 @@ public class Teacher {
 
     public Teacher() {
     }
-
-    @OneToMany(mappedBy = "teacher",
-                    cascade = CascadeType.ALL,
-                    orphanRemoval = true)
-    @ToString.Exclude
-    private List<Student> students = new ArrayList<>();
 
 
 }

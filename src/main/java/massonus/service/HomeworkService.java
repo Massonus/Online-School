@@ -1,7 +1,7 @@
 package massonus.service;
 
-import massonus.entity.Homework;
 import massonus.repositories.HomeworkRepo;
+import massonus.entity.Homework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class HomeworkService {
 
-    private final massonus.repositories.HomeworkRepo homeworkRepo;
+    private final HomeworkRepo homeworkRepo;
 
     @Autowired
     public HomeworkService(HomeworkRepo homeworkRepo) {

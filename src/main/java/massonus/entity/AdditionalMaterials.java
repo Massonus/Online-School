@@ -8,7 +8,6 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "add_materials")
 @Getter
 @Setter
 @ToString
@@ -16,7 +15,6 @@ import javax.persistence.*;
 public class AdditionalMaterials {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     private String name;

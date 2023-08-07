@@ -1,7 +1,7 @@
 package massonus.service;
 
-import massonus.entity.Person;
 import massonus.repositories.PersonRepo;
+import massonus.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

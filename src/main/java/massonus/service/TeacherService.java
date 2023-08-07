@@ -1,7 +1,7 @@
 package massonus.service;
 
-import massonus.entity.Teacher;
 import massonus.repositories.TeacherRepo;
+import massonus.entity.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
