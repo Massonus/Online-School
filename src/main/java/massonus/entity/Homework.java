@@ -8,7 +8,6 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 @Entity
-@Table (name = "homeworks")
 @Getter
 @Setter
 @ToString
@@ -19,7 +18,6 @@ public class Homework {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     private String task;

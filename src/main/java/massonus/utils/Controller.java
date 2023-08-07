@@ -1,6 +1,6 @@
 package massonus.utils;
 
-import massonus.JpaConfig;
+import massonus.config.JpaConfig;
 import massonus.entity.*;
 import massonus.service.*;
 import org.springframework.context.ApplicationContext;
