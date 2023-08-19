@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Getter
@@ -18,8 +19,10 @@ public class Lecture {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @NotBlank(message = "task can not be Blank")
     private String name;
 
+    @NotBlank(message = "task can not be Blank")
     private String description;
 
     public Lecture() {
